@@ -13,43 +13,23 @@ const articleSchema = new Schema({
   content: String
 })
 
-const linkSchema = new Schema({
-  name: String,
-  href: String
-})
-
-const TestSchema = new Schema({
-  name: String,
-  age: String
-})
-
 
 const Models = {
   User: mongoose.model('User', userSchema),
-  Article: mongoose.model('Article', articleSchema),
-  Link: mongoose.model('Link', linkSchema),
-  Test: mongoose.model('Test', TestSchema),
-  initialized: false
+  Article: mongoose.model('Article', articleSchema)
 }
 
 const initialize = function () {
-
-   Promise.all(init.map(item => new Models[item.type](item).save()))
+  Models.User.find(null, function (err, doc) {
+    if (err) {
+      console.log(err)
+    } else if (!doc.length) {
+      console.log('Database opens for the first time...')
+      Promise.all(init.map(item => new Models[item.type](item).save()))
         .then(() => console.log('Initialize successfully.'))
         .catch(() => console.log('Something went wrong during initializing.'))
-
-  // Models.User.find(null, function (err, doc) {
-  //   if (err) {
-  //     console.log(err)
-  //   } else if (!doc.length) {
-  //     console.log('Database opens for the first time...')
-  //     Promise.all(init.map(item => new Models[item.type](item).save()))
-  //       .then(() => console.log('Initialize successfully.'))
-  //       .catch(() => console.log('Something went wrong during initializing.'))
-  //   } else {
-  //     Models.initialized = true
-  //   }
-  // })
+    }
+  })
 }
 
 // mongoose.connect('mongodb://127.0.0.1/CMS2')
@@ -64,7 +44,7 @@ db.on('error', function () {
 
 db.once('open', function () {
   console.log('The database has connected.')
- initialize()
+  initialize()
 })
 
 module.exports = Models

@@ -30,7 +30,7 @@ app.use(api)
 // })
 
 app.get('*', function (req, res) {
-  const fileName = db.initialized ? 'index.html' : 'setup.html'
+  const fileName = 'index.html'
   const html = fs.readFileSync(resolve('../' + fileName), 'utf-8')
   // const html = fs.readFileSync(resolve('../setup.html'), 'utf-8')
   res.send(html)
