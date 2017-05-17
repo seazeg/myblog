@@ -9,29 +9,30 @@ module.exports = {
     filename: 'build.js'
   },
   module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-          // other vue-loader options go here
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
+    rules: [{
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        loaders: {}
+        // other vue-loader options go here
       }
-    ]
+    }, {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
+    }, {
+      test: /\.(png|jpg|gif|svg)$/,
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]?[hash]'
+      }
+    }, {
+      test: /\.css$/,
+      loader: ["vue-style-loader", "css-loader"]
+    }, {
+      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      loader: 'file-loader'
+    }]
   },
   resolve: {
     alias: {
