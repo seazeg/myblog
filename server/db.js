@@ -13,17 +13,16 @@ const articleSchema = new Schema({
   content: String
 })
 
-
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema)
 }
 
 const initialize = function () {
-  Models.User.find(null, function (err, doc) {
+  Models.Article.find(null, function (err, doc) {
     if (err) {
       console.log(err)
-    } else if (!doc.length) {
+    } else if (doc.length <= 0) {
       console.log('Database opens for the first time...')
       Promise.all(init.map(item => new Models[item.type](item).save()))
         .then(() => console.log('Initialize successfully.'))
@@ -32,9 +31,8 @@ const initialize = function () {
   })
 }
 
-// mongoose.connect('mongodb://127.0.0.1/CMS2')
+//连接数据库
 mongoose.connect('mongodb://127.0.0.1/testDatabase')
-// mongoose.set('debug', true)
 
 const db = mongoose.connection
 
