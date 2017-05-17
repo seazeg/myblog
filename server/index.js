@@ -12,7 +12,7 @@ const app = express()
 // const createBundleRenderer = require('vue-server-renderer').createBundleRenderer
 
 app.set('port', (process.env.port || 3000))
-app.use(favicon(resolve('../dist/favicon.ico')))
+// app.use(favicon(resolve('../dist/favicon.ico')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
