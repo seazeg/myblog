@@ -1,61 +1,94 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const extractCSSFromVue = new ExtractTextPlugin('styles.css')
+const extractCSSFromSASS = new ExtractTextPlugin('index.css')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    main: './src/main.js',
+    // vendor: [
+    //   'vue',
+    //   'vue-router',
+    //   'vuex'
+    // ]
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: '[name].js'
+  },
+  resolveLoader: {
+    moduleExtensions: ['-loader']
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue',
         options: {
+          preserveWhitespace: false,
+          postcss: [
+            require('autoprefixer')({
+              browsers: ['last 3 versions']
+            })
+          ],
           loaders: {
+            sass: extractCSSFromVue.extract({
+              loader: 'css!sass!',
+              fallbackLoader: 'vue-style-loader'
+            })
           }
-          // other vue-loader options go here
         }
       },
       {
+        test: /\.scss$/,
+        loader: extractCSSFromSASS.extract(['css', 'sass'])
+      },
+      {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
+        loader: 'file',
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
       }
     ]
   },
+  plugins: [
+    extractCSSFromVue,
+    extractCSSFromSASS,
+    new CopyWebpackPlugin([
+      {from: './src/assets/img', to: './'}
+    ])
+  ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue'
     }
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true,
-       proxy: {
-      '/': {
-        target: 'http://localhost:3000/'
-      }
-    }
-  },
-  performance: {
-    hints: false
+    noInfo: true
   },
   devtool: '#eval-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -63,7 +96,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
       compress: {
         warnings: false
       }

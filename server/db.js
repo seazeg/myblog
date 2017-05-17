@@ -13,6 +13,7 @@ const articleSchema = new Schema({
   content: String
 })
 
+
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema)
@@ -31,8 +32,9 @@ const initialize = function () {
   })
 }
 
-//连接数据库
-mongoose.connect('mongodb://127.0.0.1/testDatabase')
+
+mongoose.connect('mongodb://127.0.0.1/gblog')
+// mongoose.set('debug', true)
 
 const db = mongoose.connection
 
