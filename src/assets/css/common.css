@@ -8,7 +8,7 @@
 }
 
 .header .logo {
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .header .nav {
@@ -36,7 +36,7 @@
 
 .main {
     max-width: 600px;
-    margin: 220px auto;
+    margin: 250px auto;
     padding: 0 30px 50px;
     position: relative;
 }
