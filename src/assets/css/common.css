@@ -8,7 +8,10 @@
 }
 
 .header .logo {
-    margin-top: 80px;
+    margin-top: 70px;
+    -webkit-transition: all .25S ease-out;
+    -moz-transition: all .25S ease-out;
+    -o-transition: all .25S ease-out;
 }
 
 .header .nav {
@@ -17,6 +20,9 @@
     line-height: 80px;
     margin: 0 auto;
     /*border-bottom: 2px solid #e6e6e6;*/
+    -webkit-transition: height .25S ease-out;
+    -moz-transition: height .25S ease-out;
+    -o-transition: height .25S ease-out;
 }
 
 .header .nav .box {
@@ -34,9 +40,35 @@
     color: #F1103A
 }
 
+.header.fold {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.header.fold .logo {
+    width: 150px;
+    text-align: left;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.header.fold .logo img {
+    width: 100px;
+}
+
+.header.fold .nav {
+    width: 450px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    text-align: right;
+}
+
 .main {
     max-width: 600px;
-    margin: 250px auto;
+    margin: 0 auto;
+    margin-top: 250px;
+    margin-bottom: 100px;
     padding: 0 30px 50px;
     position: relative;
 }
@@ -86,6 +118,48 @@
     top: 33px;
 }
 
+.footer {}
+
+.pager {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.pager span {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #444;
+    color: #444;
+    line-height: 42px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pager span.m,
+.pager span:hover {
+    background: #F1103A;
+    border-color: #F1103A;
+    color: #fff;
+}
+
+.pager .prev:hover.n,
+.pager .next:hover.n {
+    background: #444;
+    border-color: #444;
+    color: #fff;
+    cursor: not-allowed
+}
+
+.pager .prev,
+.pager .next {
+    background: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+
+
 @media screen and (max-width: 420px) {
     .main h2 {
         font-size: 16px;
@@ -104,5 +178,25 @@
     }
     .main ul li:first-child {
         margin-top: -35px;
+    }
+}
+
+@media screen and (min-width: 420px) {
+    .float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+    }
+    .float .top {
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        background: url("../images/top.png") no-repeat;
+        -webkit-transition: all .25S ease-out;
+        -moz-transition: all .25S ease-out;
+        -o-transition: all .25S ease-out;
+    }
+    .float .top:hover {
+        background: url("../images/top_hover.png") no-repeat;
     }
 }

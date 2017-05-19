@@ -23,7 +23,8 @@ input,
 textarea,
 th,
 td,
-a:visited {
+a:visited,
+a {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
@@ -139,4 +140,23 @@ table {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    background: #e6e6e6;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
