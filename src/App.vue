@@ -2,6 +2,7 @@
   <div>
     <lay-header :isfold="isfold"></lay-header>
     <router-view></router-view>
+    <lay-footer></lay-footer>
     <lay-float></lay-float>
   </div>
 </template>
