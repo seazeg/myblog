@@ -19,13 +19,15 @@ router.get('/api/getArticle', (req, res) => {
 
 //获取文章列表
 router.get('/api/getArticles', (req, res) => {
+  const _curpage = +req.query.curpage,
+    _pagesize = +req.query.pagesize;
   db.Article.find(null, 'title date content', (err, doc) => {
     if (err) {
       console.log(err)
     } else if (doc) {
       res.send(JSON.stringify(doc))
     }
-  })
+  }).skip(_curpage - 1).limit(_pagesize)
 })
 
 //保存文章
