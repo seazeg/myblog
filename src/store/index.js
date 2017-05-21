@@ -6,7 +6,7 @@ const state = {
 
 const mutations = {
   "setListData": function (state, data) {
-    data.map(function (v) {
+    data.data.map(function (v) {
       // console.log("list:",v.date);
       return v.date = Vue.prototype.$utils.formatDate(v.date)
     });

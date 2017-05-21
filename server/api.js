@@ -21,13 +21,29 @@ router.get('/api/getArticle', (req, res) => {
 router.get('/api/getArticles', (req, res) => {
   const _curpage = +req.query.curpage,
     _pagesize = +req.query.pagesize;
-  db.Article.find(null, 'title date content', (err, doc) => {
+
+  const query = db.Article.find({});
+  query.skip((_curpage - 1) * _pagesize);
+  query.limit(_pagesize);
+  query.exec(function (err, doc) {//回调
     if (err) {
-      console.log(err)
-    } else if (doc) {
-      res.send(JSON.stringify(doc))
+      res.send(err);
+    } else {
+      //计算数据总数
+      db.Article.find(function (err, rs) {
+        result = {
+          data: doc,
+          pageInfo: {
+            curPage: _curpage,
+            pageSize: _pagesize,
+            pageTotal: rs.length
+          }
+        };
+        res.json(result)
+      });
     }
-  }).skip(_curpage - 1).limit(_pagesize)
+  });
+
 })
 
 //保存文章

@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <ul>
-            <li v-for="item in listInfo">
+            <li v-for="item in listInfo.data">
                 <h3>{{item.date}}</h3>
                 <h2><a>{{item.title}}</a></h2>
             </li>
