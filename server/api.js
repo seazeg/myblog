@@ -19,13 +19,13 @@ router.get('/api/getArticle', (req, res) => {
 
 //获取文章列表
 router.get('/api/getArticles', (req, res) => {
-  const _curpage = +req.query.curpage,
-    _pagesize = +req.query.pagesize;
+  const _curpage = +req.query.curPage,
+    _pagesize = +req.query.pageSize;
 
   const query = db.Article.find({});
   query.skip((_curpage - 1) * _pagesize);
   query.limit(_pagesize);
-  query.exec(function (err, doc) {//回调
+  query.exec(function (err, doc) { //回调
     if (err) {
       res.send(err);
     } else {
@@ -36,6 +36,7 @@ router.get('/api/getArticles', (req, res) => {
           pageInfo: {
             curPage: _curpage,
             pageSize: _pagesize,
+            pageCount: Math.ceil(rs.length / _pagesize),
             pageTotal: rs.length
           }
         };
