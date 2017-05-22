@@ -2,23 +2,28 @@ import Vue from 'vue'
 
 const state = {
   data: {},
-  pageInfo: {}
+  pageInfo: {},
+  id: {}
 }
 
 const mutations = {
-  "setListData": function (state, data) {
-    data.data.map(function (v) {
-      return v.date = Vue.prototype.$utils.formatDate(v.date)
-    });
-    state.data = data.data;
-    state.pageInfo = data.pageInfo
+  "setData": function (state, data) {
+    if (!data.id) {
+      data.data.map(function (v) {
+        return v.date = Vue.prototype.$utils.formatDate(v.date)
+      });
+      state.data = data.data;
+      state.pageInfo = data.pageInfo
+    } else {
+      state.id = data.data
+    }
   }
 }
 
 const actions = {
-  "setListData": function (store, param) {
+  "setData": function (store, param) {
     return new Promise(function (resolve, reject) {
-      store.commit('setListData', param)
+      store.commit('setData', param)
     })
   },
 }
@@ -29,6 +34,9 @@ const getters = {
   },
   getPageInfo: function (state) {
     return state.pageInfo
+  },
+  getId: function (state) {
+    return state.id
   }
 }
 

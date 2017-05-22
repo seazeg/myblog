@@ -13,7 +13,7 @@ const request = {
             url: Vue.prototype.servUrl + '/api/getArticles',
             params: params
         }).then(function (res) {
-            store.dispatch("setListData", res.data)
+            store.dispatch("setData", res.data)
         }, function (error) {
             console.log(error);
         });

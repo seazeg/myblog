@@ -20,14 +20,15 @@ router.get('/api/getArticle', (req, res) => {
 //获取文章列表
 router.get('/api/getArticles', (req, res) => {
   const _curpage = +req.query.curPage || 1,
-    _pagesize = +req.query.pageSize || 10;
-
+    _pagesize = +req.query.pageSize || 9999,
+    field = req.query.field || ""
   const query = db.Article.find({});
   query.skip((_curpage - 1) * _pagesize);
   query.limit(_pagesize);
   query.sort({
     _id: -1
   });
+  query.select(field);
   query.exec(function (err, doc) { //回调
     if (err) {
       res.send(err);
@@ -40,8 +41,9 @@ router.get('/api/getArticles', (req, res) => {
             curPage: _curpage,
             pageSize: _pagesize,
             pageCount: Math.ceil(rs.length / _pagesize),
-            pageTotal: rs.length
-          }
+            pageTotal: rs.length,
+          },
+          id: field == '_id' ? true : false
         };
         res.json(result)
       });
