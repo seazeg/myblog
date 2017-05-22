@@ -4,7 +4,7 @@
         <div class="nav">
             <div class="box">
                 <router-link class="animate-link" to="/">Home</router-link>
-                <router-link class="animate-link" to="/article">Article</router-link>
+                <router-link class="animate-link" to="/articles">Articles</router-link>
                 <router-link class="animate-link" to="/about">About</router-link>
             </div>
         </div>

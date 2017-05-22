@@ -19,12 +19,15 @@ router.get('/api/getArticle', (req, res) => {
 
 //获取文章列表
 router.get('/api/getArticles', (req, res) => {
-  const _curpage = +req.query.curPage,
-    _pagesize = +req.query.pageSize;
+  const _curpage = +req.query.curPage || 1,
+    _pagesize = +req.query.pageSize || 10;
 
   const query = db.Article.find({});
   query.skip((_curpage - 1) * _pagesize);
   query.limit(_pagesize);
+  query.sort({
+    _id: -1
+  });
   query.exec(function (err, doc) { //回调
     if (err) {
       res.send(err);
