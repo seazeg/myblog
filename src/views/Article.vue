@@ -3,8 +3,8 @@
         <h2>{{data.title}}</h2>
         <h3>{{data.date}}</h3>
         <div v-html="data.content"></div>
-        <div style="position:fixed;bottom:20px;cursor:pointer" @click="prev(data._id)" >上一篇</div>
-        <div style="position:fixed;bottom:20px;right:610px;cursor:pointer" @click="next(data._id)" >下一篇</div>
+        <div style="position:fixed;bottom:20px;cursor:pointer" @click="prev(data._id)">上一篇</div>
+        <div style="position:fixed;bottom:20px;right:610px;cursor:pointer" @click="next(data._id)">下一篇</div>
     </div>
 </template>
 <script>
@@ -56,38 +56,30 @@
                         }
                     })
                 }
+            },
+            getData() {
+                var params = {
+                    id: this.$route.params.id
+                }
+                this.$http({
+                    method: 'GET',
+                    url: this.servUrl + '/api/getArticle',
+                    params: params
+                }).then(function (res) {
+                    res.data.date = this.$utils.formatDate(res.data.date)
+                    this.data = res.data;
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+        },  
+        watch: {
+            $route() {
+                this.getData();
             }
         },
         mounted() {
-            var params = {
-                id: this.$route.params.id
-            }
-            this.$http({
-                method: 'GET',
-                url: this.servUrl + '/api/getArticle',
-                params: params
-            }).then(function (res) {
-                res.data.date = this.$utils.formatDate(res.data.date)
-                this.data = res.data;
-            }, function (error) {
-                console.log(error);
-            });
-        },
-        updated() {
-
-            // var params = {
-            //     id: this.$route.params.id
-            // }
-            // this.$http({
-            //     method: 'GET',
-            //     url: this.servUrl + '/api/getArticle',
-            //     params: params
-            // }).then(function (res) {
-            //     res.data.date = this.$utils.formatDate(res.data.date)
-            //     this.data = res.data;
-            // }, function (error) {
-            //     console.log(error);
-            // });
+            this.getData();
         }
     }
 </script>
