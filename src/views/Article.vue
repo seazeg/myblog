@@ -2,9 +2,11 @@
     <div class="article-detail">
         <h2>{{data.title}}</h2>
         <h3>{{data.date}}</h3>
-        <div v-html="data.content"></div>
-        <div style="position:fixed;bottom:20px;cursor:pointer" @click="prev(data._id)">上一篇</div>
-        <div style="position:fixed;bottom:20px;right:610px;cursor:pointer" @click="next(data._id)">下一篇</div>
+        <div class="content" v-html="data.content"></div>
+        <div class="page">
+            <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>Prev</span></a>
+            <a class="next" @click="next(data._id)"><span>Next</span><i class="iconfont icon-xiayiye"></i></a>
+        </div>
     </div>
 </template>
 <script>
@@ -18,9 +20,6 @@
                 }]
             }
         },
-        computed: {
-
-        },
         methods: {
             prev(id) {
                 var temp = this.$store.getters.getId;
@@ -29,7 +28,6 @@
                         this.pageInfo.prev = temp[i - 1] || {}
                     }
                 }
-                console.log("上一页:", this.pageInfo.prev);
                 if (!!this.pageInfo.prev._id) {
                     this.$router.push({
                         name: 'article',
@@ -37,6 +35,9 @@
                             id: this.pageInfo.prev._id
                         }
                     })
+                    this.jquery("html,body").animate({
+                        scrollTop: 150
+                    }, 300);
                 }
 
             },
@@ -47,7 +48,6 @@
                         this.pageInfo.next = temp[i + 1] || ""
                     }
                 }
-                console.log("下一页:", this.pageInfo.next);
                 if (!!this.pageInfo.next._id) {
                     this.$router.push({
                         name: 'article',
@@ -55,6 +55,9 @@
                             id: this.pageInfo.next._id
                         }
                     })
+                    this.jquery("html,body").animate({
+                        scrollTop: 150
+                    }, 300);
                 }
             },
             getData() {
@@ -72,7 +75,7 @@
                     console.log(error);
                 });
             }
-        },  
+        },
         watch: {
             $route() {
                 this.getData();

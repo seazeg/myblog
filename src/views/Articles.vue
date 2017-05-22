@@ -37,7 +37,7 @@
         created() {
             var params = {
                 curPage: 1,
-                pageSize: 5
+                pageSize: 10
             }
             this.request.getArticles(params);
         }

@@ -20,6 +20,9 @@
                     pageSize: psize
                 }
                 this.fn(params);
+                this.jquery("html,body").animate({
+                    scrollTop: 150
+                }, 300);
             },
             go(curpage, psize) {
                 this.common(curpage, psize);

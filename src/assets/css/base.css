@@ -160,3 +160,9 @@ table {
     background: #e6e6e6;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
+
+
+.hide{
+    display: none;
+}

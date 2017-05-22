@@ -1,5 +1,5 @@
 <template>
-    <div class="float">
+    <div class="float" :class="{'hide':this.$route.name=='home'}">
         <div class="top" @click="top()"></div>
     </div>
 </template>
