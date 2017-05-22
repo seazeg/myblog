@@ -4,8 +4,8 @@
         <h3>{{data.date}}</h3>
         <div class="content" v-html="data.content"></div>
         <div class="page">
-            <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>Prev</span></a>
-            <a class="next" @click="next(data._id)"><span>Next</span><i class="iconfont icon-xiayiye"></i></a>
+            <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>NEWER</span></a>
+            <a class="next" @click="next(data._id)"><span>OLDER</span><i class="iconfont icon-xiayiye"></i></a>
         </div>
     </div>
 </template>

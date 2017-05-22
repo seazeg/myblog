@@ -1,7 +1,9 @@
 <template>
   <div class="main">
     <lay-header :isfold="isfold"></lay-header>
-    <router-view></router-view>
+    <transition name="component-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <lay-footer></lay-footer>
     <lay-float></lay-float>
   </div>
@@ -20,7 +22,7 @@
         this.scrollTop = document.body.scrollTop;
         if (this.scrollTop > 55) {
           this.isfold = true;
-        }else{
+        } else {
           this.isfold = false;
         }
       }

@@ -117,6 +117,11 @@ table {
     border-spacing: 0;
 }
 
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 .animate-link {
     position: relative;
 }
@@ -161,8 +166,27 @@ table {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
+.tab-enter-active,
+.tab-leave-active {
+    transition: all 0.5s;
+}
 
+.tab-enter,
+.tab-leave-active {
+    opacity: 0;
+    transform: translateY(30px);
+}
 
-.hide{
+.component-fade-enter-active,
+.component-fade-leave-active {
+    transition: opacity .3s ease;
+}
+
+.component-fade-enter,
+.component-fade-leave-active {
+    opacity: 0;
+}
+
+.hide {
     display: none;
 }
