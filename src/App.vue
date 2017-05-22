@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <lay-header :isfold="isfold"></lay-header>
     <router-view></router-view>
     <lay-footer></lay-footer>
