@@ -14,7 +14,7 @@
         data() {
             return {
                 input: '# Add your article title',
-                id: ""
+                id: this.$route.query.id || ""
             }
         },
         components: {
@@ -58,6 +58,24 @@
                     params: params
                 }).then(function (res) {
                     $this.id = res.data._id
+                    console.log(res);
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+        },
+        mounted() {
+            var $this = this
+            if (!!$this.$route.query.id) {
+                var params = {
+                    id: $this.$route.query.id
+                }
+                $this.$http({
+                    method: 'GET',
+                    url: $this.servUrl + '/api/getArticle',
+                    params: params
+                }).then(function (res) {
+                    $this.input = res.data.content;
                     console.log(res);
                 }, function (error) {
                     console.log(error);

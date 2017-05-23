@@ -12,7 +12,7 @@ router.get('/api/getArticle', (req, res) => {
     if (err) {
       console.log(err)
     } else if (doc) {
-      res.send(doc)
+      res.json(doc)
     }
   })
 })

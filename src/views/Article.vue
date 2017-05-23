@@ -7,6 +7,7 @@
             <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>NEWER</span></a>
             <a class="next" @click="next(data._id)"><span>OLDER</span><i class="iconfont icon-xiayiye"></i></a>
         </div>
+        <div @click="edit">edit</div>
     </div>
 </template>
 <script>
@@ -68,6 +69,14 @@
                         scrollTop: 150
                     }, 300);
                 }
+            },
+            edit() {
+                this.$router.replace({
+                    name: 'write',
+                    query: {
+                        id: this.$route.params.id
+                    }
+                })
             },
             getData() {
                 var params = {
