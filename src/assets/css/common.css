@@ -103,7 +103,8 @@
 }
 
 .article-list,
-.article-detail {
+.article-detail,
+.about {
     max-width: 600px;
     margin: 0 auto;
     margin-top: 250px;
@@ -217,6 +218,35 @@
 
 .article-detail .page .next span {
     margin-right: 5px;
+}
+
+.write {
+    width: 100%;
+}
+
+.write textarea {
+    width: 46%;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    background: #1e2126;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    padding: 2%;
+    color: #e6e6e6
+}
+
+.write article {
+    width: 46%;
+    display: inline-block;
+    position: absolute;
+    background: #fff;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    padding: 2%;
+    overflow-y: auto;
 }
 
 .footer {

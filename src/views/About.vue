@@ -1,3 +1,3 @@
 <template>
-  <div class="article-detail">about me</div>
+  <div class="about">about me</div>
 </template>

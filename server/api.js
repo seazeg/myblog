@@ -52,20 +52,46 @@ router.get('/api/getArticles', (req, res) => {
 
 })
 
+router.get('/api/createArticle', (req, res) => {
+  const article = {
+    title: "req.body.title",
+    date: "2012-1-1",
+    content: " req.body.content"
+    // title: req.body.title,
+    // date: req.body.date,
+    // content: req.body.content
+  }
+  db.Article.create(article, function (err, docs) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('保存成功：' + docs);
+      res.json(docs);
+    }
+  });
+})
+
 //保存文章
 router.post('/api/saveArticle', (req, res) => {
-  const id = req.body._id
+  const id = req.query.id
   const article = {
-    title: req.body.title,
-    date: req.body.date,
-    content: req.body.content
+    title: req.query.title,
+    date: req.query.date,
+    content: req.query.content
   }
-  if (id) {
+  if (!!id) {
     db.Article.findByIdAndUpdate(id, article, fn)
   } else {
-    new db.Article(article).save()
+    db.Article.create(article, function (err, docs) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('保存成功：' + docs);
+        res.json(docs);
+      }
+    });
   }
-  res.status(200).end()
+
 })
 
 //删除文章

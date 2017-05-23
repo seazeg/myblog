@@ -5,6 +5,7 @@ import articles from '../views/Articles.vue'
 import article from '../views/Article.vue'
 import archive from '../views/Archive.vue'
 import about from '../views/About.vue'
+import write from '../views/Write.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,10 @@ export default new VueRouter({
         name: 'archive',
         component: archive,
     }, {
+        path: '/write',
+        name: 'write',
+        component: write,
+    }, {
         path: '/about',
         name: 'about',
         component: about,
@@ -35,5 +40,3 @@ export default new VueRouter({
         redirect: '/'
     }]
 })
-
-
