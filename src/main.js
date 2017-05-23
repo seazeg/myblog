@@ -12,8 +12,7 @@ import $ from 'jquery'
 // import axios from 'axios'
 import utils from './utils/utils'
 import store from './service/'
-
-
+    
 Vue.use(VueResource)
 
 

@@ -158,16 +158,15 @@
     top: 33px;
 }
 
-.article-detail h2 {
+.article-detail h2.title {
     text-align: left;
     font-size: 28px;
     color: #444;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 1px;
-    
 }
 
-.article-detail h3 {
+.article-detail h3.date {
     text-align: left;
     font-size: 14px;
     color: #999;
@@ -182,14 +181,14 @@
 .article-detail .page {
     position: fixed;
     width: 100%;
-    left:0;
-    bottom:0;
+    left: 0;
+    bottom: 0;
     padding: 20px 0;
     height: 50px;
     /*border-top: 1px solid #e6e6e6*/
 }
 
-.article-detail a {
+.article-detail .page a {
     display: inline-block;
     cursor: pointer;
     width: 60px;
@@ -198,25 +197,25 @@
     color: #999
 }
 
-.article-detail a:hover {
+.article-detail .page a:hover {
     color: #F1103A;
 }
 
-.article-detail .prev {
+.article-detail .page .prev {
     float: left;
     margin-left: 10%;
 }
 
-.article-detail .next {
+.article-detail .page .next {
     float: right;
     margin-right: 10%;
 }
 
-.article-detail .prev span {
+.article-detail .page .prev span {
     margin-left: 5px;
 }
 
-.article-detail .next span {
+.article-detail .page .next span {
     margin-right: 5px;
 }
 

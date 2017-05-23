@@ -1,8 +1,8 @@
 <template>
     <div class="article-detail">
-        <h2>{{data.title}}</h2>
-        <h3>{{data.date}}</h3>
-        <div class="content" v-html="data.content"></div>
+        <h2 class="title">{{data.title}}</h2>
+        <h3 class="date">{{data.date}}</h3>
+        <article class="content" v-html="data.content"></article>
         <div class="page">
             <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>NEWER</span></a>
             <a class="next" @click="next(data._id)"><span>OLDER</span><i class="iconfont icon-xiayiye"></i></a>
@@ -10,15 +10,24 @@
     </div>
 </template>
 <script>
+    import marked from 'marked';
+    import highlight from 'highlight.js';
+    import '../assets/css/highlight-theme/monokai-sublime.css'
+    import '../assets/css/article.css'
     export default {
         data() {
             return {
-                data: {},
+                data: "",
+                compiledMarkdown: "",
                 pageInfo: [{
                     prev: {},
                     next: {}
                 }]
             }
+        },
+        components: {
+            marked,
+            highlight
         },
         methods: {
             prev(id) {
@@ -69,7 +78,20 @@
                     url: this.servUrl + '/api/getArticle',
                     params: params
                 }).then(function (res) {
-                    res.data.date = this.$utils.formatDate(res.data.date)
+                    res.data.date = this.$utils.formatDate(res.data.date);
+                    res.data.content = marked(res.data.content, {
+                        renderer: new marked.Renderer(),
+                        gfm: true,
+                        tables: true,
+                        breaks: false,
+                        pedantic: false,
+                        sanitize: false,
+                        smartLists: true,
+                        smartypants: false,
+                        highlight: function (code) {
+                            return highlight.highlightAuto(code).value;
+                        }
+                    })
                     this.data = res.data;
                 }, function (error) {
                     console.log(error);
@@ -82,6 +104,9 @@
             }
         },
         mounted() {
+            this.jquery("html,body").animate({
+                scrollTop: 150
+            }, 300);
             this.getData();
         }
     }

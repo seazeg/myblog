@@ -1,5 +1,5 @@
 <template>
-    <div class="float" :class="{'hide':this.$route.name=='home'}">
+    <div class="float animated" :class="{'hide':this.$route.name=='home'}">
         <div class="top" @click="top()"></div>
     </div>
 </template>
@@ -8,7 +8,8 @@
         name: "lay-float",
         methods: {
             top() {
-                this.jquery("html,body").animate({
+                var $this = this
+                $this.jquery("html,body").animate({
                     scrollTop: 0
                 }, 300);
             }
