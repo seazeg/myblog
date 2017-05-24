@@ -10,7 +10,7 @@
     import _ from 'lodash'
     import marked from 'marked';
     import highlight from 'highlight.js';
-    import '../assets/css/highlight-theme/monokai-sublime.css'
+    import 'highlight.js/styles/monokai-sublime.css'
     import '../assets/css/article.css'
     export default {
         data() {

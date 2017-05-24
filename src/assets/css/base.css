@@ -199,3 +199,8 @@ body {
 .separate{
     margin:0 5px;
 }
+
+.loading .bar{
+    background: #F1103A;
+    height:2px;
+}

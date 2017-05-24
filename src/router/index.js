@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Nanobar from 'nanobar'
 import home from '../views/Home.vue'
 import articles from '../views/Articles.vue'
 import article from '../views/Article.vue'
@@ -9,8 +10,7 @@ import write from '../views/Write.vue'
 
 Vue.use(VueRouter)
 
-
-export default new VueRouter({
+const router = new VueRouter({
     routes: [{
         path: '/',
         name: 'home',
@@ -40,3 +40,20 @@ export default new VueRouter({
         redirect: '/'
     }]
 })
+
+
+
+const nanobar = new Nanobar({
+    classname:'loading'
+});
+
+router.beforeEach((to, from, next) => {
+    nanobar.go(30)
+    next();
+})
+router.afterEach(() => {
+    nanobar.go(100)
+})
+
+
+export default router
