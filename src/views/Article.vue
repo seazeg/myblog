@@ -1,7 +1,9 @@
 <template>
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
-        <h3 class="date">{{data.createDate}}<span class="separate">|</span>{{data.category}} <a class="edit" @click="edit" title="Edit Article"><i class="iconfont icon-bianji"></i></a></h3>
+        <h3 class="date">{{data.createDate}}<span class="separate">|</span>{{data.category}}
+            <a class="edit" @click="edit" title="Edit Article"><i class="iconfont icon-bianji"></i></a>
+        </h3>
         <article class="content" v-html="data.content"></article>
         <div class="page">
             <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>NEWER</span></a>
@@ -112,6 +114,11 @@
             }
         },
         mounted() {
+            if (this.$store.getters.getListData.length == "undefined" || !this.$store.getters.getListData.length) {
+                this.request.getArticles({
+                    field: "article"
+                });
+            }
             this.jquery("html,body").animate({
                 scrollTop: 150
             }, 300);

@@ -3,7 +3,8 @@ import Vue from 'vue'
 const state = {
   data: {},
   pageInfo: {},
-  id: {}
+  id: {},
+  date: {}
 }
 
 const mutations = {
@@ -14,6 +15,7 @@ const mutations = {
       });
       state.data = data.data;
       state.pageInfo = data.pageInfo
+      state.date = data.data;
     } else {
       state.id = data.data
     }
@@ -37,6 +39,9 @@ const getters = {
   },
   getId: function (state) {
     return state.id
+  },
+  getTimeLine: function (state) {
+    return state.date
   }
 }
 

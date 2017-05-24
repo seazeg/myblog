@@ -22,9 +22,9 @@ Vue.prototype.$utils = utils
 Vue.prototype.servUrl = "http://localhost:3000";
 
 
-Vue.prototype.request.getArticles({
-  field: "_id"
-});
+// Vue.prototype.request.getArticles({
+//   field: "_id"
+// });
 
 
 new Vue({

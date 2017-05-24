@@ -34,7 +34,7 @@
                 });
             }
         },
-        created() {
+        mounted () {
             var params = {
                 curPage: 1,
                 pageSize: 10

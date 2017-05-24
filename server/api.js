@@ -22,13 +22,18 @@ router.get('/api/getArticles', (req, res) => {
   const _curpage = +req.query.curPage || 1,
     _pagesize = +req.query.pageSize || 9999,
     field = req.query.field || ""
+  const fieldArr = {
+    article: "_id",
+    archive: "_id title createDate"
+  }
+
   const query = db.Article.find({});
   query.skip((_curpage - 1) * _pagesize);
   query.limit(_pagesize);
   query.sort({
-    _id: -1
+    createDate: -1
   });
-  query.select(field);
+  query.select(fieldArr[field]);
   query.exec(function (err, doc) { //回调
     if (err) {
       res.send(err);
@@ -43,7 +48,8 @@ router.get('/api/getArticles', (req, res) => {
             pageCount: Math.ceil(rs.length / _pagesize),
             pageTotal: rs.length,
           },
-          id: field == '_id' ? true : false
+          article: field == 'article' ? true : false,
+          archive: field == 'archive' ? true : false
         };
         res.json(result)
       });

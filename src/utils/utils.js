@@ -2,11 +2,6 @@ const fn = {
     formatDate: function (date) {
         return date.split("T")[0].replace(/-/gm, ".")
     },
-    backTop: function () {
-        this.jquery("html,body").animate({
-            scrollTop: 0
-        }, 300);
-    },
     formatDateTime: function (date) {
         if (!!date && typeof date == "object") {
             var y = date.getFullYear();
@@ -21,6 +16,12 @@ const fn = {
         } else {
             return date;
         }
+    },
+    sortArr: function (arr, field) {
+        arr.sort(function (a, b) {
+            return a[field] - b[field];
+        })
+        return arr;
     }
 }
 
