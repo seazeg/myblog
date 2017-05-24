@@ -107,6 +107,7 @@
 .about,
 .archive {
     max-width: 600px;
+    min-height: 350px;
     margin: 0 auto;
     margin-top: 250px;
     margin-bottom: 100px;
