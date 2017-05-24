@@ -220,9 +220,36 @@
     margin-right: 5px;
 }
 
+.article-detail .edit{
+    float: right;
+}
+
 .write {
     width: 100%;
 }
+
+.write input.edittitle {
+    position: relative;
+    width: 46%;
+    padding: 35px 2% 5px 2%;
+    background: #1e2126;
+    border: none;
+    color: #e6e6e6;
+}
+
+.write .doctitle{
+    position: relative;
+    width: 46%;
+    padding: 35px 2% 5px 2%;
+    background: #fff;
+    border: none;
+    color:black;
+    float:right;
+    font-size: 18px;
+    font-weight: bold
+}
+
+
 
 .write textarea {
     width: 46%;
@@ -233,7 +260,7 @@
     left: 0;
     bottom: 0;
     top: 0;
-    padding: 2%;
+    padding: 85px 2% 2% 2%;
     color: #e6e6e6
 }
 
@@ -245,7 +272,7 @@
     right: 0;
     bottom: 0;
     top: 0;
-    padding: 2%;
+    padding: 85px 2% 2% 2%;
     overflow-y: auto;
 }
 

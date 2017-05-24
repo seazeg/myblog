@@ -2,7 +2,7 @@
     <div class="article-list">
         <ul>
             <li v-for="item in listInfo">
-                <h3>{{item.date}}</h3>
+                <h3>{{item.createDate}}</h3>
                 <h2><a @click="open(item._id)">{{item.title}}</a></h2>
             </li>
         </ul>

@@ -9,7 +9,9 @@ const userSchema = new Schema({
 
 const articleSchema = new Schema({
   title: String,
-  date: Date,
+  category: String,
+  createDate: Date,
+  updateDate: Date,
   content: String
 })
 

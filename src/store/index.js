@@ -10,7 +10,7 @@ const mutations = {
   "setData": function (state, data) {
     if (!data.id) {
       data.data.map(function (v) {
-        return v.date = Vue.prototype.$utils.formatDate(v.date)
+        return v.createDate = Vue.prototype.$utils.formatDate(v.createDate)
       });
       state.data = data.data;
       state.pageInfo = data.pageInfo

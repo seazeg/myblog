@@ -1,7 +1,9 @@
 <template>
     <div class="write">
-        <textarea :value="input" @input="update" id="editor"></textarea>
+        <textarea :value="input" @input="update" placeholder="正文"></textarea>
+        <input type="text" class="edittitle" placeholder="Add your article title" v-model="title" />
         <article v-html="compiledMarkdown"></article>
+        <input type="text" class="doctitle" placeholder="Add your article title" v-model="title" readonly="readonly" />
     </div>
 </template>
 <script>
@@ -13,7 +15,8 @@
     export default {
         data() {
             return {
-                input: '# Add your article title',
+                input: '# 正文',
+                title: "Add your article title",
                 id: this.$route.query.id || ""
             }
         },
@@ -44,7 +47,7 @@
                 $this.input = e.target.value;
                 var params = {
                     id: $this.id,
-                    title: JSON.stringify($this.input).split('\\n')[0].split(' ')[1],
+                    title: $this.title,
                     date: $this.$utils.formatDateTime(new Date()),
                     content: $this.input
                 }
@@ -76,6 +79,7 @@
                     params: params
                 }).then(function (res) {
                     $this.input = res.data.content;
+                    $this.title = res.data.title;
                     console.log(res);
                 }, function (error) {
                     console.log(error);

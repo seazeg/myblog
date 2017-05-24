@@ -52,41 +52,26 @@ router.get('/api/getArticles', (req, res) => {
 
 })
 
-router.get('/api/createArticle', (req, res) => {
-  const article = {
-    title: "req.body.title",
-    date: "2012-1-1",
-    content: " req.body.content"
-    // title: req.body.title,
-    // date: req.body.date,
-    // content: req.body.content
-  }
-  db.Article.create(article, function (err, docs) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('保存成功：' + docs);
-      res.json(docs);
-    }
-  });
-})
-
 //保存文章
 router.post('/api/saveArticle', (req, res) => {
   const id = req.query.id
-  const article = {
+  let article = {
     title: req.query.title,
-    date: req.query.date,
     content: req.query.content
   }
   if (!!id) {
-    db.Article.findByIdAndUpdate(id, article, fn)
+    article.updateDate = req.query.date;
+    db.Article.findByIdAndUpdate(id, article, function (err, rs) {
+      console.log("更新结束");
+      res.json(rs);
+    })
   } else {
+    article.createDate = req.query.date;
     db.Article.create(article, function (err, docs) {
       if (err) {
         console.log(err);
       } else {
-        console.log('保存成功：' + docs);
+        console.log('创建成功：' + docs);
         res.json(docs);
       }
     });

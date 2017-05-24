@@ -112,7 +112,7 @@ textarea {
     font-size: 100%;
 }
 
-textarea {
+textarea,input {
     resize: none;
     outline: none
 }
@@ -194,4 +194,8 @@ body {
 
 .hide {
     display: none;
+}
+
+.separate{
+    margin:0 5px;
 }

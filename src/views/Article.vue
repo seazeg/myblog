@@ -1,13 +1,12 @@
 <template>
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
-        <h3 class="date">{{data.date}}</h3>
+        <h3 class="date">{{data.createDate}}<span class="separate">|</span>{{data.category}} <a class="edit" @click="edit" title="Edit Article"><i class="iconfont icon-bianji"></i></a></h3>
         <article class="content" v-html="data.content"></article>
         <div class="page">
             <a class="prev" @click="prev(data._id)"><i class="iconfont icon-shangyiye"></i><span>NEWER</span></a>
             <a class="next" @click="next(data._id)"><span>OLDER</span><i class="iconfont icon-xiayiye"></i></a>
         </div>
-        <div @click="edit">edit</div>
     </div>
 </template>
 <script>
@@ -87,7 +86,7 @@
                     url: this.servUrl + '/api/getArticle',
                     params: params
                 }).then(function (res) {
-                    res.data.date = this.$utils.formatDate(res.data.date);
+                    res.data.createDate = this.$utils.formatDate(res.data.createDate);
                     res.data.content = marked(res.data.content, {
                         renderer: new marked.Renderer(),
                         gfm: true,
