@@ -55,25 +55,14 @@
             }, 300),
             save(params) {
                 var $this = this
-                // $this.$http({
-                //     method: 'POST',
-                //     url: this.servUrl + '/api/saveArticle',
-                //     params: params
-                // }).then(function (res) {
-                //     $this.id = res.data._id
-                //     console.log(res);
-                // }, function (error) {
-                //     console.log(error);
-                // });
-
-                $this.$axios.post($this.servUrl + '/api/saveArticle', {params}).then((res) => {
+                $this.$axios.post($this.servUrl + '/api/saveArticle', {
+                    params
+                }).then((res) => {
                     $this.id = res.data._id
                     console.log(res);
                 }, (error) => {
                     console.log(error);
                 });
-
-
             }
         },
         mounted() {
@@ -82,19 +71,9 @@
                 var params = {
                     id: $this.$route.query.id
                 }
-                // $this.$http({
-                //     method: 'GET',
-                //     url: $this.servUrl + '/api/getArticle',
-                //     params: params
-                // }).then(function (res) {
-                //     $this.input = res.data.content;
-                //     $this.title = res.data.title;
-                //     console.log(res);
-                // }, function (error) {
-                //     console.log(error);
-                // });
-
-                $this.$axios.get($this.servUrl + '/api/getArticle', {params}).then((res) => {
+                $this.$axios.get($this.servUrl + '/api/getArticle', {
+                    params
+                }).then((res) => {
                     $this.input = res.data.content;
                     $this.title = res.data.title;
                     console.log(res);

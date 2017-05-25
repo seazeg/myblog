@@ -84,32 +84,9 @@
                 var params = {
                     id: $this.$route.params.id
                 }
-                // this.$http({
-                //     method: 'GET',
-                //     url: this.servUrl + '/api/getArticle',
-                //     params: params
-                // }).then(function (res) {
-                //     res.data.createDate = this.$utils.formatDate(res.data.createDate);
-                //     res.data.content = marked(res.data.content, {
-                //         renderer: new marked.Renderer(),
-                //         gfm: true,
-                //         tables: true,
-                //         breaks: false,
-                //         pedantic: false,
-                //         sanitize: false,
-                //         smartLists: true,
-                //         smartypants: false,
-                //         highlight: function (code) {
-                //             return highlight.highlightAuto(code).value;
-                //         }
-                //     })
-                //     this.data = res.data;
-                // }, function (error) {
-                //     console.log(error);
-                // });
-
-
-                $this.$axios.get($this.servUrl + '/api/getArticle', {params}).then((res) => {
+                $this.$axios.get($this.servUrl + '/api/getArticle', {
+                    params
+                }).then((res) => {
                     res.data.createDate = $this.$utils.formatDate(res.data.createDate);
                     res.data.content = marked(res.data.content, {
                         renderer: new marked.Renderer(),
