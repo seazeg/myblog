@@ -313,6 +313,34 @@
     color: #F1103A;
 }
 
+.about div {
+    /*float:left*/
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.about div.content {
+    margin: 40px 0;
+}
+
+.about div.content p {
+    padding: 5px 0;
+    line-height:30px; 
+}
+
+.about div i {
+    font-size: 20px;
+    margin-right: 5px;
+    line-height: 10px;
+    vertical-align: middle;
+    color: #444
+}
+
+.about a:hover {
+    color: #F1103A;
+}
+
 .footer {
     width: 100%;
     padding-bottom: 30px;
