@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import VueResource from 'vue-resource'
+// import VueResource from 'vue-resource'
 import './views/layout/index'
 import './assets/css/base.css'
 import './assets/css/font.css'
@@ -13,7 +13,7 @@ import $ from 'jquery'
 import utils from './utils/utils'
 import store from './service/'
     
-Vue.use(VueResource);
+// Vue.use(VueResource);
 
 
 Vue.prototype.jquery = $
