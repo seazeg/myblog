@@ -326,7 +326,7 @@
 
 .about div.content p {
     padding: 5px 0;
-    line-height:30px; 
+    line-height: 30px;
 }
 
 .about div i {
@@ -422,5 +422,14 @@
     }
     .float .top:hover {
         background: url("../images/top_hover.png") no-repeat;
+    }
+    .float a.home i {
+        font-size: 32px;
+    }
+    .float a.home i:hover {
+        color: #F1103A;
+        -webkit-transition: all .25S ease-out;
+        -moz-transition: all .25S ease-out;
+        -o-transition: all .25S ease-out;
     }
 }

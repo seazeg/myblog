@@ -1,6 +1,7 @@
 <template>
-    <div class="float animated" :class="{'hide':this.$route.name=='home'||this.$route.name=='write'}">
-        <div class="top" @click="top()"></div>
+    <div class="float animated">
+        <div class="top" @click="top()" :class="{'hide':this.$route.name=='home'||this.$route.name=='write'}"></div>
+        <router-link to='/' class="home" :class="{'hide':this.$route.name!='write'}" title="back home"><i class="iconfont icon-fanhuishouye"></i></router-link>
     </div>
 </template>
 <script>
