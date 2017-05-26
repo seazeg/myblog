@@ -29,6 +29,7 @@ a {
     padding: 0;
     font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
     color: #111;
+    outline: none;
 }
 
 body,

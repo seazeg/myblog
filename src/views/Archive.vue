@@ -2,7 +2,7 @@
   <div class="archive">
     <div class="box" v-for="data in listInfo">
       <h2>{{data.bDate}}</h2>
-      <ul >
+      <ul>
         <li v-for="item in data.data">
           <h3>{{item.createDate}}</h3><a @click="open(item._id)">{{item.title}}</a></li>
       </ul>
@@ -11,16 +11,14 @@
 </template>
 <script>
   export default {
-    data() {
-      return {
-
-      }
-    },
     computed: {
       listInfo: function () {
         var getdata = this.$store.getters.getTimeLine;
         for (var x in getdata) {
-          getdata[x].bDate = getdata[x].createDate.substring(0, 4);
+          if (!!getdata[x].createDate) {
+            getdata[x].bDate = getdata[x].createDate.substring(0, 4);
+          }
+
         }
         var map = {},
           result = [];

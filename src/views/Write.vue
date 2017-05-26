@@ -55,7 +55,9 @@
             }, 300),
             save(params) {
                 var $this = this
-                $this.$axios.post($this.servUrl + '/api/saveArticle', {
+                $this.$axios({
+                    method: "post",
+                    url: $this.servUrl + '/api/saveArticle',
                     params
                 }).then((res) => {
                     $this.id = res.data._id
@@ -71,7 +73,9 @@
                 var params = {
                     id: $this.$route.query.id
                 }
-                $this.$axios.get($this.servUrl + '/api/getArticle', {
+                $this.$axios({
+                    method: "get",
+                    url: $this.servUrl + '/api/getArticle',
                     params
                 }).then((res) => {
                     $this.input = res.data.content;

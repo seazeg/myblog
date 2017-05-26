@@ -8,14 +8,15 @@ const store = new Vuex.Store(modules)
 
 const request = {
     requestList: function (params) {
-        Vue.prototype.$axios.get(Vue.prototype.servUrl + '/api/getArticles', {
+        Vue.prototype.$axios({
+            method: "get",
+            url: Vue.prototype.servUrl + "/api/getArticles",
             params
         }).then((res) => {
             store.dispatch("setData", res.data)
         }, (error) => {
             console.log(error);
         });
-
     }
 }
 

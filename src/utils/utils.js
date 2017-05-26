@@ -1,6 +1,8 @@
 const fn = {
     formatDate: function (date) {
-        return date.split("T")[0].replace(/-/gm, ".")
+        if (!!date) {
+            return date.split("T")[0].replace(/-/gm, ".")
+        }
     },
     formatDateTime: function (date) {
         if (!!date && typeof date == "object") {

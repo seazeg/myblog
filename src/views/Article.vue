@@ -84,7 +84,9 @@
                 var params = {
                     id: $this.$route.params.id
                 }
-                $this.$axios.get($this.servUrl + '/api/getArticle', {
+                $this.$axios({
+                    method: 'get',
+                    url: $this.servUrl + '/api/getArticle',
                     params
                 }).then((res) => {
                     res.data.createDate = $this.$utils.formatDate(res.data.createDate);
