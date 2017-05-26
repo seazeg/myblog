@@ -1,7 +1,7 @@
 <template>
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
-        <h3 class="date">{{data.createDate}}<span class="separate">|</span>{{data.category}}
+        <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}
             <a class="edit" @click="edit" title="Edit Article"><i class="iconfont icon-bianji"></i></a>
         </h3>
         <article class="content" v-html="data.content"></article>

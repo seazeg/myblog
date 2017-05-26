@@ -4,6 +4,11 @@
         <input type="text" class="edittitle" placeholder="Add your article title" v-model="title" />
         <article v-html="compiledMarkdown"></article>
         <input type="text" class="doctitle" placeholder="Add your article title" v-model="title" readonly="readonly" />
+        <select>
+            <option>请选择分类</option>
+            <option>杂谈</option>
+            <option>技术文章</option>
+        </select>
     </div>
 </template>
 <script>

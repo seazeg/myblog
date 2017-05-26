@@ -230,6 +230,23 @@
     width: 100%;
 }
 
+.write select {
+    position: absolute;
+    background: #1e2126;
+    color: #fff;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    border: none;
+    outline: none;
+}
+
+.write select option{
+    font-size: 12px;
+    border: none;
+    outline: none
+}
+
 .write input.edittitle {
     position: relative;
     width: 46%;
