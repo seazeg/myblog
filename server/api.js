@@ -12,10 +12,42 @@ router.get('/api/getArticle', (req, res) => {
     if (err) {
       console.log(err)
     } else if (doc) {
-      res.json(doc)
+      var json = {
+        logind: false,
+        data: doc
+      }
+      if (req.session.user) {
+        json.logind = true
+      }
+      res.json(json)
     }
   })
 })
+
+//管理员登录
+router.get('/api/login', (req, res) => {
+  if (!req.session.user) {
+    const username = req.query.username,
+      password = req.query.password;
+    db.User.findOne({
+      username
+    }, (err, doc) => {
+      if (err) {
+        console.log(err)
+      } else if (doc) {
+        if (password === doc.password && username === doc.username) {
+          req.session.user = username;
+          console.log("登录成功!");
+          res.json("登录成功!")
+        }
+      }
+    })
+  } else {
+    console.log("已经登录过!");
+    res.json("已经登录过!")
+  }
+})
+
 
 //获取文章列表
 router.get('/api/getArticles', (req, res) => {
@@ -55,31 +87,36 @@ router.get('/api/getArticles', (req, res) => {
       });
     }
   });
-
 })
 
 //保存文章
 router.post('/api/saveArticle', (req, res) => {
-  const id = req.query.id
-  let article = {
-    title: req.query.title,
-    content: req.query.content
-  }
-  if (!!id) {
-    article.updateDate = req.query.date;
-    db.Article.findByIdAndUpdate(id, article, function (err, rs) {
-      console.log("更新结束");
-      res.json(rs);
-    })
+  if (req.session.user) {
+    const id = req.query.id
+    let article = {
+      title: req.query.title,
+      content: req.query.content
+    }
+    if (!!id) {
+      article.updateDate = req.query.date;
+      db.Article.findByIdAndUpdate(id, article, function (err, rs) {
+        console.log("更新结束");
+        res.json(rs);
+      })
+    } else {
+      article.createDate = req.query.date;
+      db.Article.create(article, function (err, docs) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('创建成功：' + docs);
+          res.json(docs);
+        }
+      });
+    }
   } else {
-    article.createDate = req.query.date;
-    db.Article.create(article, function (err, docs) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('创建成功：' + docs);
-        res.json(docs);
-      }
+    res.json({
+      logind: false
     });
   }
 

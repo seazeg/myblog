@@ -83,8 +83,8 @@
                     url: $this.servUrl + '/api/getArticle',
                     params
                 }).then((res) => {
-                    $this.input = res.data.content;
-                    $this.title = res.data.title;
+                    $this.input = res.data.data.content;
+                    $this.title = res.data.data.title;
                     console.log(res);
                 }, (error) => {
                     console.log(error);

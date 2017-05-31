@@ -2,7 +2,7 @@
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
         <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}
-            <a class="edit" @click="edit" title="Edit Article"><i class="iconfont icon-bianji"></i></a>
+            <a class="edit" @click="edit" title="Edit Article" v-if="data.logind"><i class="iconfont icon-bianji"></i></a>
         </h3>
         <article class="content" v-html="data.content"></article>
         <div class="page">
@@ -89,8 +89,8 @@
                     url: $this.servUrl + '/api/getArticle',
                     params
                 }).then((res) => {
-                    res.data.createDate = $this.$utils.formatDate(res.data.createDate);
-                    res.data.content = marked(res.data.content, {
+                    res.data.data.createDate = $this.$utils.formatDate(res.data.createDate);
+                    res.data.data.content = marked(res.data.data.content, {
                         renderer: new marked.Renderer(),
                         gfm: true,
                         tables: true,
@@ -103,7 +103,7 @@
                             return highlight.highlightAuto(code).value;
                         }
                     })
-                    this.data = res.data;
+                    this.data = res.data.data;
                 }, (error) => {
                     console.log(error);
                 });

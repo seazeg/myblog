@@ -15,8 +15,19 @@ const app = express()
 app.set('port', (process.env.port || 3000))
 app.use(favicon(resolve('../dist/favicon.ico')))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(cookieParser())
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+app.use(cookieParser("sessionuser"));
+app.use(session({
+  name: 'usertoken',
+  secret: 'sessionuser',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60
+  },
+}));
 app.use('/dist', express.static(resolve('../dist')))
 app.use(api)
 

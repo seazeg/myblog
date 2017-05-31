@@ -3,8 +3,9 @@ const init = require('./init.json')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-  name: String,
-  password: String
+  username: String,
+  password: String,
+  role: String
 })
 
 const articleSchema = new Schema({
