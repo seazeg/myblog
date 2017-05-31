@@ -2,7 +2,7 @@
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
         <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}
-            <a class="edit" @click="edit" title="Edit Article" v-if="data.logind"><i class="iconfont icon-bianji"></i></a>
+            <a class="edit" @click="edit" title="Edit Article" v-if="isEdit"><i class="iconfont icon-bianji"></i></a>
         </h3>
         <article class="content" v-html="data.content"></article>
         <div class="page">
@@ -20,6 +20,7 @@
         data() {
             return {
                 data: "",
+                isEdit:false,
                 compiledMarkdown: "",
                 pageInfo: [{
                     prev: {},
@@ -104,6 +105,7 @@
                         }
                     })
                     this.data = res.data.data;
+                    this.isEdit = res.data.logind;
                 }, (error) => {
                     console.log(error);
                 });

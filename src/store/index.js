@@ -4,7 +4,8 @@ const state = {
   data: {},
   pageInfo: {},
   id: {},
-  date: {}
+  date: {},
+  logind: false
 }
 
 const mutations = {
@@ -19,6 +20,10 @@ const mutations = {
     } else {
       state.id = data.data
     }
+  },
+  "setLogind": function (state, data) {
+    state.logind = data
+    console.log( state.logind);
   }
 }
 
@@ -28,6 +33,11 @@ const actions = {
       store.commit('setData', param)
     })
   },
+  "setLogind": function (store, param) {
+    return new Promise(function (resolve, reject) {
+      store.commit('setLogind', param)
+    })
+  }
 }
 
 const getters = {
@@ -42,6 +52,9 @@ const getters = {
   },
   getTimeLine: function (state) {
     return state.date
+  },
+  getLogind: function (state) {
+    return state.logind
   }
 }
 

@@ -3,6 +3,47 @@ const router = express.Router()
 const db = require('./db')
 const fn = () => {}
 
+
+//校验是否登录
+router.get('/api/g', (req, res) => {
+  if (req.session.user) {
+    res.json({
+      logind: true
+    })
+  } else {
+    res.json({
+      logind: false
+    })
+  }
+})
+
+
+//管理员登录
+router.get('/api/login', (req, res) => {
+  if (!req.session.user) {
+    const username = req.query.username,
+      password = req.query.password;
+    db.User.findOne({
+      username
+    }, (err, doc) => {
+      if (err) {
+        console.log(err)
+      } else if (doc) {
+        if (password === doc.password && username === doc.username) {
+          req.session.user = username;
+          console.log("登录成功!");
+          res.json("登录成功!")
+        } else {
+          console.log("登录成功!");
+        }
+      }
+    })
+  } else {
+    console.log("已经登录过!");
+    res.json("已经登录过!")
+  }
+})
+
 //获取文章
 router.get('/api/getArticle', (req, res) => {
   const _id = req.query.id;
@@ -22,30 +63,6 @@ router.get('/api/getArticle', (req, res) => {
       res.json(json)
     }
   })
-})
-
-//管理员登录
-router.get('/api/login', (req, res) => {
-  if (!req.session.user) {
-    const username = req.query.username,
-      password = req.query.password;
-    db.User.findOne({
-      username
-    }, (err, doc) => {
-      if (err) {
-        console.log(err)
-      } else if (doc) {
-        if (password === doc.password && username === doc.username) {
-          req.session.user = username;
-          console.log("登录成功!");
-          res.json("登录成功!")
-        }
-      }
-    })
-  } else {
-    console.log("已经登录过!");
-    res.json("已经登录过!")
-  }
 })
 
 
@@ -72,7 +89,12 @@ router.get('/api/getArticles', (req, res) => {
     } else {
       //计算数据总数
       db.Article.find(function (err, rs) {
+        var lg = false
+        if (req.session.user) {
+          lg = true
+        }
         result = {
+          logind: lg,
           data: doc,
           pageInfo: {
             curPage: _curpage,

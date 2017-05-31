@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Nanobar from 'nanobar'
+import login from '../views/Login.vue'
 import home from '../views/Home.vue'
 import articles from '../views/Articles.vue'
 import article from '../views/Article.vue'
@@ -13,6 +14,10 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode:"history",
     routes: [{
+        path: '/login',
+        name: 'login',
+        component: login,
+    },{
         path: '/',
         name: 'home',
         component: home,
