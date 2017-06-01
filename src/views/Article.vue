@@ -22,10 +22,10 @@
                 data: "",
                 isEdit:false,
                 compiledMarkdown: "",
-                pageInfo: [{
+                pageInfo: {
                     prev: {},
                     next: {}
-                }]
+                }
             }
         },
         components: {
@@ -60,6 +60,7 @@
                         this.pageInfo.next = temp[i + 1] || ""
                     }
                 }
+               
                 if (!!this.pageInfo.next._id) {
                     this.$router.push({
                         name: 'article',

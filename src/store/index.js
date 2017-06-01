@@ -10,20 +10,21 @@ const state = {
 
 const mutations = {
   "setData": function (state, data) {
-    if (!data.id) {
+    if (data.article) {
+      state.id = data.data
+    } else if (data.archive) {
+      state.date = data.data;
+    } else {
       data.data.map(function (v) {
         return v.createDate = Vue.prototype.$utils.formatDate(v.createDate)
       });
       state.data = data.data;
       state.pageInfo = data.pageInfo
-      state.date = data.data;
-    } else {
-      state.id = data.data
     }
   },
   "setLogind": function (state, data) {
     state.logind = data
-    console.log( state.logind);
+    console.log(state.logind);
   }
 }
 
