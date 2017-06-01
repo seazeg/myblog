@@ -20,7 +20,7 @@
         data() {
             return {
                 data: "",
-                isEdit:false,
+                isEdit: false,
                 compiledMarkdown: "",
                 pageInfo: {
                     prev: {},
@@ -47,9 +47,15 @@
                             id: this.pageInfo.prev._id
                         }
                     })
-                    this.jquery("html,body").animate({
-                        scrollTop: 150
-                    }, 300);
+                    if (window.innerWidth >= 769) {
+                        this.jquery("html,body").animate({
+                            scrollTop: 150
+                        }, 300);
+                    } else {
+                        this.jquery("html,body").animate({
+                            scrollTop: 100
+                        }, 300);
+                    }
                 }
 
             },
@@ -60,7 +66,7 @@
                         this.pageInfo.next = temp[i + 1] || ""
                     }
                 }
-               
+
                 if (!!this.pageInfo.next._id) {
                     this.$router.push({
                         name: 'article',
@@ -68,9 +74,15 @@
                             id: this.pageInfo.next._id
                         }
                     })
-                    this.jquery("html,body").animate({
-                        scrollTop: 150
-                    }, 300);
+                    if (window.innerWidth >= 769) {
+                        this.jquery("html,body").animate({
+                            scrollTop: 150
+                        }, 300);
+                    } else {
+                        this.jquery("html,body").animate({
+                            scrollTop: 100
+                        }, 300);
+                    }
                 }
             },
             edit() {
@@ -124,9 +136,16 @@
                     field: "article"
                 });
             }
-            this.jquery("html,body").animate({
-                scrollTop: 150
-            }, 300);
+            if (window.innerWidth >= 769) {
+                this.jquery("html,body").animate({
+                    scrollTop: 150
+                }, 300);
+            } else {
+                this.jquery("html,body").animate({
+                    scrollTop: 100
+                }, 300);
+            }
+
             this.getData();
         }
     }

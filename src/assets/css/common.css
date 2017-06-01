@@ -78,28 +78,46 @@
     color: #F1103A
 }
 
-.header.fold {
-    border-bottom: 1px solid #e6e6e6;
+@media screen and (max-width: 769px) {
+    .header.fold {
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .header.fold .logo {
+        width: 150px;
+        margin: 0 auto;
+        margin-top: 30px;
+        display: inline-block;
+    }
+    .header.fold .logo img {
+        width: 100px;
+    }
+    .header.fold .nav {
+        height: 60px;
+        line-height: 60px;
+    }
 }
 
-.header.fold .logo {
-    width: 150px;
-    text-align: left;
-    margin: 0 auto;
-    margin-top: 20px;
-    display: inline-block;
-}
-
-.header.fold .logo img {
-    width: 100px;
-}
-
-.header.fold .nav {
-    width: 450px;
-    height: 60px;
-    line-height: 60px;
-    display: inline-block;
-    text-align: right;
+@media screen and (min-width: 769px) {
+    .header.fold {
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .header.fold .logo {
+        width: 150px;
+        text-align: left;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    .header.fold .logo img {
+        width: 100px;
+    }
+    .header.fold .nav {
+        width: 450px;
+        height: 60px;
+        line-height: 60px;
+        display: inline-block;
+        text-align: right;
+    }
 }
 
 .article-list,
@@ -220,6 +238,23 @@
 
 .article-detail .page .next span {
     margin-right: 5px;
+}
+
+@media screen and (max-width: 769px) {
+    .article-list,
+    .article-detail,
+    .about,
+    .archive {
+        margin-bottom: 0
+    }
+    .article-detail .page {
+        height: 30px;
+        border-top: 1px solid #e6e6e6;
+        line-height: 30px;
+        background: #fff;
+        padding: 10px 0;
+        z-index: 1;
+    }
 }
 
 .article-detail .edit {
@@ -367,6 +402,12 @@
     bottom: 0;
 }
 
+@media screen and (max-width: 769px) {
+    .footer {
+        padding-bottom: 70px
+    }
+}
+
 .pager {
     text-align: center;
     margin: 80px 0 40px 0;
@@ -470,16 +511,19 @@
         right: 30px;
     }
     .float .top {
-        width: 48px;
-        height: 48px;
         cursor: pointer;
-        background: url("../images/top.png") no-repeat;
+        /*width: 48px;
+        height: 48px;
+        background: url("../images/top.png") no-repeat;*/
         -webkit-transition: all .25S ease-out;
         -moz-transition: all .25S ease-out;
         -o-transition: all .25S ease-out;
     }
+    .float .top i {
+        font-size: 48px;
+    }
     .float .top:hover {
-        background: url("../images/top_hover.png") no-repeat;
+        color: #F1103A
     }
     .float a.home i {
         font-size: 32px;
