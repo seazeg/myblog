@@ -91,7 +91,7 @@
                     url: $this.servUrl + '/api/getArticle',
                     params
                 }).then((res) => {
-                    res.data.data.createDate = $this.$utils.formatDate(res.data.createDate);
+                    res.data.data.createDate = $this.$utils.formatDate(res.data.data.createDate);
                     res.data.data.content = marked(res.data.data.content, {
                         renderer: new marked.Renderer(),
                         gfm: true,

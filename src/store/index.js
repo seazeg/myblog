@@ -19,6 +19,7 @@ const mutations = {
         return v.createDate = Vue.prototype.$utils.formatDate(v.createDate)
       });
       state.data = data.data;
+      console.log(state.data);
       state.pageInfo = data.pageInfo
     }
   },
