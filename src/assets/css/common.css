@@ -241,7 +241,7 @@
     outline: none;
 }
 
-.write select option{
+.write select option {
     font-size: 12px;
     border: none;
     outline: none
@@ -399,6 +399,47 @@
 .pager .prev,
 .pager .next {
     color: #444;
+}
+
+.login {
+    margin: 0 auto;
+    margin-top: 250px;
+    min-height: 450px;
+    max-width: 600px;
+}
+
+.login .col {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.login .col i {
+    position: relative;
+    left: 20px;
+    font-size: 18px;
+    color: #444;
+}
+
+.login .col input {
+    font-size: 14px;
+    padding: 5px 5px 5px 30px;
+    border: none;
+    border-bottom: 1px solid #999
+}
+
+.login .col span.btn {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #fff;
+    background: #444;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.login .col span.btn:hover {
+    background: #F1103A;
 }
 
 @media screen and (max-width: 420px) {

@@ -3,7 +3,7 @@
         <div class="logo animated" :class="{'bounce':this.$route.name=='home','flipInX':this.$route.name!='home'}">
             <router-link to="/"><img src="../assets/images/logo.png" /></router-link>
         </div>
-        <div class="nav animated" :class="{'fadeIn':this.$route.name=='home'}">
+        <div class="nav animated" :class="{'fadeIn':this.$route.name=='home','hide':this.$route.name=='login'}">
             <div class="box">
                 <!--<router-link class="animate-link" to="/" :class="{'hover':this.$route.name=='home'}">home</router-link>-->
                 <router-link class="animate-link" to="/articles" :class="{'hover':this.$route.name=='articles'||this.$route.name=='article'}">articles</router-link>
