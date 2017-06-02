@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
+import VeeValidate from 'vee-validate';
 // import VueResource from 'vue-resource'
 import './layout/index'
 import './assets/css/base.css'
@@ -13,8 +14,8 @@ import $ from 'jquery'
 import utils from './utils/utils'
 import store from './service/'
 
-// Vue.use(VueResource);
 
+Vue.use(VeeValidate);
 
 Vue.prototype.jquery = $
 Vue.prototype.$axios = axios
