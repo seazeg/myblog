@@ -85,7 +85,10 @@
                 pageSize: 10
             }
             this.request.getArticles(params);
-            window.addEventListener('scroll', this.scroll)
+            if (mobile) {
+                window.addEventListener('scroll', this.scroll)
+            }
+            this.jquery("html,body").scrollTop(0);
         }
     }
 </script>

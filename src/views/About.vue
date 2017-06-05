@@ -9,3 +9,10 @@
     <div><i class="iconfont icon-weixin"></i>微信：seazeg</div>
   </div>
 </template>
+<script>
+  export default {
+    mounted() {
+      this.jquery("html,body").scrollTop(0);
+    }
+  }
+</script>

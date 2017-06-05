@@ -57,6 +57,7 @@
       this.request.getArticles({
         field: "archive"
       });
+      this.jquery("html,body").scrollTop(0);
     }
   }
 </script>
