@@ -19,9 +19,15 @@ const mutations = {
         return v.createDate = Vue.prototype.$utils.formatDate(v.createDate)
       });
       state.data = data.data;
-      console.log(state.data);
       state.pageInfo = data.pageInfo
     }
+  },
+  "setMobData": function (state, data) {
+    data.data.map(function (v) {
+      return v.createDate = Vue.prototype.$utils.formatDate(v.createDate)
+    });
+    state.data = state.data.concat(data.data);
+    state.pageInfo = data.pageInfo
   },
   "setLogind": function (state, data) {
     state.logind = data
@@ -38,6 +44,11 @@ const actions = {
   "setLogind": function (store, param) {
     return new Promise(function (resolve, reject) {
       store.commit('setLogind', param)
+    })
+  },
+  "setMobData": function (store, param) {
+    return new Promise(function (resolve, reject) {
+      store.commit('setMobData', param)
     })
   }
 }

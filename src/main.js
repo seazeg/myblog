@@ -17,6 +17,7 @@ import store from './service/'
 
 Vue.use(VeeValidate);
 
+
 Vue.prototype.jquery = $
 Vue.prototype.$axios = axios
 Vue.prototype.$utils = utils
