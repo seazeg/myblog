@@ -73,10 +73,8 @@
                                 console.log(error);
                             });　　　
 
-                        }, 1000);
+                        }, 1500);
                     }
-                } else {
-                    console.log("加载完成");
                 }
 
             }
