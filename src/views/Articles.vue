@@ -85,7 +85,7 @@
                 pageSize: 10
             }
             this.request.getArticles(params);
-            if (mobile) {
+            if (this.mobile) {
                 window.addEventListener('scroll', this.scroll)
             }
             this.jquery("html,body").scrollTop(0);

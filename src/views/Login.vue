@@ -2,10 +2,10 @@
     <div class="login">
         <form data-vv-scope="form-1">
             <div class="col"><i class="iconfont icon-yonghu"></i><input type="text" name="username" v-validate="'required'" v-model="userInfo.username"
-                    placeholder="请输入用户名" />
+                    placeholder="请输入用户名" autocomplete="off"/>
                 <p style="font-size: 12px;margin: 5px 0;color: red;">{{ errors.first('form-1.username') }}</p>
             </div>
-            <div class="col"><i class="iconfont icon-mm"></i><input type="password" name="password"  v-validate="'required'"  v-model="userInfo.password" placeholder="请输入密码" @keyup.enter="login()"
+            <div class="col"><i class="iconfont icon-mm"></i><input type="password" name="password"  v-validate="'required'"  v-model="userInfo.password" placeholder="请输入密码" @keyup.enter="login()" autocomplete="off"
                 />
                 <p style="font-size: 12px;margin: 5px 0;color: red;">{{ errors.first('form-1.password') }}</p>
             </div>
