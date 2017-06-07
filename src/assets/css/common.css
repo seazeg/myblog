@@ -165,7 +165,7 @@
 .article-list h3 {
     letter-spacing: 2px;
     margin: 0;
-    text-transform: uppercase;
+    text-transform:capitalize;
 }
 
 .article-list h2 {

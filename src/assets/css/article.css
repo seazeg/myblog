@@ -1,8 +1,8 @@
 article{font-family:"微软雅黑",Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;}
 article>*:first-child{margin-top:0 !important;}
 article>*:last-child{margin-bottom:0 !important;}
-article a{color:#4183C4;}
-article a.absent{color:#cc0000;}
+article a{color:#F1103A!important;}
+article a.absent{color:#cc0000!important;}
 article a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0;}
 article h1,article h2,article h3,article h4,article h5,article h6{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased;cursor:text;position:relative;}
 article h1:hover a.anchor,article h2:hover a.anchor,article h3:hover a.anchor,article h4:hover a.anchor,article h5:hover a.anchor,article h6:hover a.anchor{text-decoration:none;}
