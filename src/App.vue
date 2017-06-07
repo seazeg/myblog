@@ -1,5 +1,5 @@
 <template>
-  <div class="main"  >
+  <div class="main" v-if="">
     <lay-header :isfold="isfold"></lay-header>
     <transition name="component-fade" mode="out-in">
       <router-view></router-view>
@@ -15,6 +15,11 @@
       return {
         scrollTop: "",
         isfold: false
+      }
+    },
+    computed: {
+      mainLoading(){
+        return 
       }
     },
     methods: {

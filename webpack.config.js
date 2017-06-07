@@ -24,7 +24,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.(png|jpg|gif|svg)$/,
-      loader: 'file-loader',
+      loader: 'url-loader',
       options: {
         name: '[name].[ext]?[hash]'
       }

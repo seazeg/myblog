@@ -5,7 +5,8 @@ const state = {
   pageInfo: {},
   id: {},
   date: {},
-  logind: false
+  logind: false,
+  loading: false
 }
 
 const mutations = {
@@ -31,7 +32,9 @@ const mutations = {
   },
   "setLogind": function (state, data) {
     state.logind = data
-    console.log(state.logind);
+  },
+  "setLoading":function (state, data) {
+    state.loading = data
   }
 }
 

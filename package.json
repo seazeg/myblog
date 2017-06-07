@@ -27,6 +27,7 @@
     "nanobar": "^0.4.2",
     "nprogress": "^0.2.0",
     "serve-favicon": "^2.4.3",
+    "url-loader": "^0.5.8",
     "vee-validate": "^2.0.0-rc.5",
     "vue-style-loader": "^3.0.1"
   },
