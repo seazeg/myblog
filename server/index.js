@@ -12,7 +12,8 @@ const app = express()
 
 // const createBundleRenderer = require('vue-server-renderer').createBundleRenderer
 
-app.set('port', (process.env.port || 3000))
+app.set('port', (process.env.port || 3000));
+// app.use(express.compress());
 app.use(favicon(resolve('../dist/favicon.ico')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -36,7 +37,6 @@ app.use(api)
 app.get('*', function (req, res) {
   const fileName = 'index.html'
   const html = fs.readFileSync(resolve('../' + fileName), 'utf-8')
-  // const html = fs.readFileSync(resolve('../setup.html'), 'utf-8')
   res.send(html)
 })
 
