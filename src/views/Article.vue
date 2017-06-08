@@ -131,11 +131,11 @@
             }
         },
         mounted() {
-            if (this.$store.getters.getListData.length == "undefined" || !this.$store.getters.getListData.length) {
+            // if (this.$store.getters.getListData.length == "undefined" || !this.$store.getters.getListData.length) {
                 this.request.getArticles({
                     field: "article"
                 });
-            }
+            // }
             if (window.innerWidth >= 769) {
                 this.jquery("html,body").animate({
                     scrollTop: 150
