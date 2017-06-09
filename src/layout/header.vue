@@ -9,7 +9,7 @@
                 <router-link class="animate-link" to="/articles" :class="{'hover':this.$route.name=='articles'||this.$route.name=='article'}">文章</router-link>
                 <router-link class="animate-link" to="/archive" :class="{'hover':this.$route.name=='archive'}">归档</router-link>
                 <router-link class="animate-link" to="/about" :class="{'hover':this.$route.name=='about'}">关于</router-link>
-                <router-link v-if="logind" class="animate-link" to="/write" :class="{'hover':this.$route.name=='write'}">撰写</router-link>
+                <router-link v-if="!logind" class="animate-link" to="/write" :class="{'hover':this.$route.name=='write'}">撰写</router-link>
             </div>
         </div>
     </div>

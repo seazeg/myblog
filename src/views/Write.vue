@@ -1,14 +1,15 @@
 <template>
     <div class="write">
         <textarea :value="input" @input="update" placeholder="正文"></textarea>
-        <input type="text" class="edittitle" placeholder="Add your article title" v-model="title" />
+        <div class="edittitle">
+            <input type="text" placeholder="Add your article title" v-model="title" />
+            <input type="text" placeholder="Add your tags" v-model="tags" />
+        </div>
         <article v-html="compiledMarkdown"></article>
-        <input type="text" class="doctitle" placeholder="Add your article title" v-model="title" readonly="readonly" />
-        <!--<select>
-            <option>请选择分类</option>
-            <option>杂谈</option>
-            <option>技术文章</option>
-        </select>-->
+        <div class="doctitle">
+            <input type="text" placeholder="Add your article title" v-model="title" readonly="readonly" />
+            <input type="text" placeholder="Add your tags" v-model="tags" readonly="readonly" />
+        </div>
     </div>
 </template>
 <script>
@@ -22,6 +23,7 @@
             return {
                 input: '# 正文',
                 title: "Add your article title",
+                tags: "Add your tags",
                 id: this.$route.query.id || ""
             }
         },
