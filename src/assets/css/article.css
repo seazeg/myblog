@@ -18,7 +18,7 @@ article h1{font-size:22px;color:#111;}
 article h2{font-size:20px;border-bottom:1px solid #cccccc;color:#111;}
 article h3{font-size:18px;}
 article h4{font-size:16px;}
-article h5{font-size:15px;}
+article h5{font-size:15px;font-weight: normal;}
 article h6{color:#777777;font-size:14px;}
 article>p,article blockquote,article ul,article ol,article dl,article li,article table,article pre{margin:15px 0!important;}
 article hr{border:0 none;color:#cccccc;height:4px;padding:0;}
