@@ -1,5 +1,5 @@
 <template>
-    <div class="archive">
+    <div class="tags">
         <div class="box" v-for="data in listInfo">
             <h2>{{data.category}}</h2>
             <ul>

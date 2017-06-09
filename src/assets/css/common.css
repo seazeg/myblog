@@ -262,7 +262,8 @@
     .article-list,
     .article-detail,
     .about,
-    .archive {
+    .archive,
+    .tags {
         margin-bottom: 0
     }
     .article-detail .page {
@@ -357,42 +358,50 @@
     overflow-y: auto;
 }
 
-.archive .box {
+.archive .box,
+.tags .box {
     letter-spacing: 1px;
     margin-bottom: 20px;
 }
 
-.archive .box h2 {
+.archive .box h2,
+.tags .box h2 {
     font-size: 24px;
     color: #444;
 }
 
-.archive .box ul {
+.archive .box ul,
+.tags .box ul {
     padding: 10px 0 0 25px;
 }
 
-.archive .box li {
+.archive .box li,
+.tags .box li {
     font-size: 14px;
     color: #999;
     padding: 10px 0 10px 5%;
     border-left: 1px solid #999;
 }
 
-.archive .box li h3 {
+.archive .box li h3,
+.tags .box li h3 {
     display: inline-block;
     position: absolute;
     margin-top: 1px;
     color: #999
 }
 
-.archive .box li a {
+.archive .box li a,
+.tags .box li a {
     display: inline-block;
     margin-left: 105px;
 }
 
-.archive .box li a:hover {
+.archive .box li a:hover,
+.tags .box li a:hover {
     color: #F1103A;
 }
+
 
 .about div {
     /*float:left*/
@@ -421,8 +430,6 @@
 .about a:hover {
     color: #F1103A;
 }
-
-
 
 .footer {
     width: 100%;
