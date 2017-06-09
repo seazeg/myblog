@@ -135,6 +135,7 @@
 .article-list,
 .article-detail,
 .about,
+.tags,
 .archive {
     max-width: 600px;
     min-height: 350px;
@@ -420,6 +421,8 @@
 .about a:hover {
     color: #F1103A;
 }
+
+
 
 .footer {
     width: 100%;

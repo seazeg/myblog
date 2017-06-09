@@ -73,7 +73,7 @@ router.get('/api/getArticles', (req, res) => {
     field = req.query.field || ""
   const fieldArr = {
     article: "_id",
-    archive: "_id title createDate"
+    archive: "_id title createDate category"
   }
 
   const query = db.Article.find({});
