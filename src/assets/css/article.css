@@ -1,4 +1,6 @@
-article{font-family:"微软雅黑",Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;}
+article{font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;}
+article h1,article h2,article h3,article h4,article h5,article h6{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;letter-spacing:0.5px}
+article p{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;font-size: 14px;letter-spacing:1px;}
 article>*:first-child{margin-top:0 !important;}
 article>*:last-child{margin-bottom:0 !important;}
 article a{color:#F1103A!important;}
@@ -12,9 +14,9 @@ article h3 tt,article h3 code{font-size:inherit;}
 article h4 tt,article h4 code{font-size:inherit;}
 article h5 tt,article h5 code{font-size:inherit;}
 article h6 tt,article h6 code{font-size:inherit;}
-article h1{font-size:20px;color:black;}
-article h2{font-size:18px;border-bottom:1px solid #cccccc;color:black;}
-article h3{font-size:17px;}
+article h1{font-size:22px;color:#111;}
+article h2{font-size:20px;border-bottom:1px solid #cccccc;color:#111;}
+article h3{font-size:18px;}
 article h4{font-size:16px;}
 article h5{font-size:15px;}
 article h6{color:#777777;font-size:14px;}
