@@ -45,6 +45,7 @@ article blockquote{border-left:4px solid #444;padding:0 15px;color:#777777;backg
 article blockquote>:first-child{margin-top:0;}
 article blockquote>:last-child{margin-bottom:0;}
 article blockquote p{font-size: 12px;line-height: 35px;}
+article blockquote a{color:#111!important}
 article table{padding:0;border-collapse:collapse;}
 article img{max-width:500px;}
 article span.frame{display:block;overflow:hidden;}
