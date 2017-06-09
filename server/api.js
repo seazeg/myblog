@@ -117,7 +117,8 @@ router.post('/api/saveArticle', (req, res) => {
     const id = req.query.id
     let article = {
       title: req.query.title,
-      content: req.query.content
+      content: req.query.content,
+      category: req.query.category
     }
     if (!!id) {
       article.updateDate = req.query.date;

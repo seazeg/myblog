@@ -3,12 +3,12 @@
         <textarea :value="input" @input="update" placeholder="正文"></textarea>
         <div class="edittitle">
             <input type="text" placeholder="Add your article title" v-model="title" />
-            <input type="text" placeholder="Add your tags" v-model="tags" />
+            <input type="text" placeholder="Add your tags" v-model="category" />
         </div>
         <article v-html="compiledMarkdown"></article>
         <div class="doctitle">
             <input type="text" placeholder="Add your article title" v-model="title" readonly="readonly" />
-            <input type="text" placeholder="Add your tags" v-model="tags" readonly="readonly" />
+            <input type="text" placeholder="Add your tags" v-model="category" readonly="readonly" />
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@
             return {
                 input: '# 正文',
                 title: "Add your article title",
-                tags: "Add your tags",
+                category: "Add your tags",
                 id: this.$route.query.id || ""
             }
         },
@@ -56,7 +56,8 @@
                     id: $this.id,
                     title: $this.title,
                     date: $this.$utils.formatDateTime(new Date()),
-                    content: $this.input
+                    content: $this.input,
+                    category: $this.category
                 }
                 $this.save(params)
             }, 300),
@@ -87,6 +88,7 @@
                 }).then((res) => {
                     $this.input = res.data.data.content;
                     $this.title = res.data.data.title;
+                    $this.category = res.data.data.category;
                     console.log(res);
                 }, (error) => {
                     console.log(error);
