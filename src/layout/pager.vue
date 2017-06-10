@@ -1,9 +1,9 @@
 <template>
     <div class="pager">
-        <span class="prev animate-link" @click="prev(pageInfo.curPage-1,pageInfo.pageSize)" :class="{'n':pageInfo.curPage-1==0}"><i class="iconfont icon-shangyiye"></i></span>
+        <span class="prev animate-link" v-if="pageInfo=={}" @click="prev(pageInfo.curPage-1,pageInfo.pageSize)" :class="{'n':pageInfo.curPage-1==0}"><i class="iconfont icon-shangyiye"></i></span>
         <span v-for="pageNum in pageInfo.pageCount" v-if="(pageInfo.curPage<=3?pageNum<=5:pageNum<=pageInfo.curPage+2&&pageNum>=pageInfo.curPage-2)||(pageInfo.pageCount-pageInfo.curPage<3?pageNum>=pageInfo.pageCount-4:pageNum<=pageInfo.curPage+2&&pageNum>=pageInfo.curPage-2)"
             class="num animate-link" :class="{'m':pageNum==pageInfo.curPage}" @click="go(pageNum,pageInfo.pageSize)">{{pageNum}}</span>
-        <span class="next animate-link" @click="next(pageInfo.curPage+1,pageInfo.pageCount,pageInfo.pageSize)" :class="{'n':pageInfo.curPage==pageInfo.pageCount}"><i class="iconfont icon-xiayiye"></i></span>
+        <span class="next animate-link" v-if="pageInfo=={}" @click="next(pageInfo.curPage+1,pageInfo.pageCount,pageInfo.pageSize)" :class="{'n':pageInfo.curPage==pageInfo.pageCount}"><i class="iconfont icon-xiayiye"></i></span>
     </div>
 </template>
 <script>
