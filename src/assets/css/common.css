@@ -306,6 +306,8 @@
     width: 46%;
     padding: 25px 2% 5px 2%;
     float: left;
+        z-index: 1;
+    background: #1e2126;
 }
 
 .write .edittitle input {

@@ -1,6 +1,6 @@
 article{font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;}
 article h1,article h2,article h3,article h4,article h5,article h6{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;letter-spacing:0.5px}
-article p{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;font-size: 14px;letter-spacing:1px;}
+article p{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;font-size: 14px;letter-spacing:1px;word-break: break-all}
 article>*:first-child{margin-top:0 !important;}
 article>*:last-child{margin-bottom:0 !important;}
 article a{color:#F1103A!important;}
@@ -30,8 +30,8 @@ article>h3:first-child,article>h4:first-child,article>h5:first-child,article>h6:
 article a:first-child h1,article a:first-child h2,article a:first-child h3,article a:first-child h4,article a:first-child h5,article a:first-child h6{margin-top:0;padding-top:0;}
 article h1 p,article h2 p,article h3 p,article h4 p,article h5 p,article h6 p{margin-top:0;}
 article li p.first{display:inline-block;}
-article li{margin:0!important;}
-article ul,article ol{padding:0 10px!important;}
+article li{margin:0!important;list-style-type: disc}
+article ul,article ol{padding:0 20px!important;}
 article ul:first-child,article ol:first-child{margin-top:0!important;}
 article dl{padding:0;}
 article dl dt{font-size:14px;font-weight:bold;font-style:italic;padding:0;margin:15px 0 5px;}
@@ -71,3 +71,4 @@ article sup{font-size:0.83em;vertical-align:super;line-height:0;}
 article *{-webkit-print-color-adjust:exact;}
 article ol ul,article ul ol, article ul ul, article ol ol { margin-top: 0; margin-bottom: 0 }
 article pre code{font-family: "Consolas"!important}
+article .zz a{color:#23241f!important;font-size: 12px!important;word-break: break-all!important;}
