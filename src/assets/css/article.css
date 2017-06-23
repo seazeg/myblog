@@ -1,3 +1,7 @@
+@font-face { 
+  font-family:csla; 
+  src: url('../fonts/consola.ttf'); 
+} 
 article{font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;}
 article h1,article h2,article h3,article h4,article h5,article h6{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;letter-spacing:0.5px}
 article p{font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;font-size: 14px;letter-spacing:1px;word-break: break-all}
@@ -70,5 +74,5 @@ article pre code,article pre tt{background-color:transparent;border:none;}
 article sup{font-size:0.83em;vertical-align:super;line-height:0;}
 article *{-webkit-print-color-adjust:exact;}
 article ol ul,article ul ol, article ul ul, article ol ol { margin-top: 0; margin-bottom: 0 }
-article pre code{font-family: "Consolas"!important}
+article pre code{font-family:csla!important}
 article .zz a{color:#23241f!important;font-size: 12px!important;word-break: break-all!important;}

@@ -414,6 +414,14 @@
     letter-spacing: 2px;
 }
 
+.about div.col span {
+   display: inline-block;
+}
+
+.about div.col a {
+   display: inline-block;
+}
+
 .about div.content {
     margin: 40px 0;
 }
