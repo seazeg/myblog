@@ -1,8 +1,8 @@
 <template>
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
-        <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}<span class="separate"
-                :class="{'hide':!data.category}">|</span><i class="iconfont icon-yanjing" style="font-size:22px;vertical-align: middle;"></i>{{data.views||0}}
+        <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}
+            <eye v-if="isEdit"><span class="separate" :class="{'hide':!data.category}">|</span><i class="iconfont icon-yanjing" style="font-size:22px;vertical-align: middle;"></i>{{data.views || 0}}</eye>
             <a class="edit" @click="edit" title="Edit Article" v-if="isEdit"><i class="iconfont icon-bianji"></i></a>
         </h3>
         <article class="content" v-html="data.content"></article>
