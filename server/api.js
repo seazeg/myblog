@@ -66,6 +66,7 @@ router.get('/api/getArticle', (req, res) => {
 })
 
 
+
 //获取文章列表
 router.get('/api/getArticles', (req, res) => {
   const _curpage = +req.query.curPage || 1,
@@ -152,6 +153,22 @@ router.post('/api/deleteArticle', (req, res) => {
 })
 
 
+//浏览量
+router.post('/api/saveViews', (req, res) => {
+    const id = req.query.id
+    var article = {
+      views: +req.query.views + 1
+    }
+    if (!!id) {
+      console.log(article.views);
+      db.Article.findByIdAndUpdate(id, article, function (err, rs) {
+        console.log("浏览量更新结束");
+        res.json("完成");
+      })
+    }else{
+      console.log("未传id")
+    }
 
+})
 
 module.exports = router

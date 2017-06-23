@@ -1,7 +1,8 @@
 <template>
     <div class="article-detail">
         <h2 class="title">{{data.title}}</h2>
-        <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}
+        <h3 class="date">{{data.createDate}}<span class="separate" :class="{'hide':!data.category}">|</span>{{data.category}}<span class="separate"
+                :class="{'hide':!data.category}">|</span><i class="iconfont icon-yanjing" style="font-size:22px;vertical-align: middle;"></i>{{data.views||0}}
             <a class="edit" @click="edit" title="Edit Article" v-if="isEdit"><i class="iconfont icon-bianji"></i></a>
         </h3>
         <article class="content" v-html="data.content"></article>
@@ -119,10 +120,26 @@
                     })
                     this.data = res.data.data;
                     this.isEdit = res.data.logind;
+                    $this.saveViews(res.data.data.views)
                 }, (error) => {
                     console.log(error);
                 });
-
+            },
+            saveViews(views) {
+                var $this = this;
+                var params = {
+                    id: $this.$route.params.id,
+                    views: views || 0
+                }
+                $this.$axios({
+                    method: 'post',
+                    url: $this.servUrl + '/api/saveViews',
+                    params
+                }).then((res) => {
+                    console.log(res);
+                }, (error) => {
+                    console.log(error);
+                });
             }
         },
         watch: {
@@ -132,9 +149,9 @@
         },
         mounted() {
             // if (this.$store.getters.getListData.length == "undefined" || !this.$store.getters.getListData.length) {
-                this.request.getArticles({
-                    field: "article"
-                });
+            this.request.getArticles({
+                field: "article"
+            });
             // }
             if (window.innerWidth >= 769) {
                 this.jquery("html,body").animate({

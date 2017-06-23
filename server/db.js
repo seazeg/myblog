@@ -13,7 +13,8 @@ const articleSchema = new Schema({
   category: String,
   createDate: Date,
   updateDate: Date,
-  content: String
+  content: String,
+  views: Number 
 })
 
 
