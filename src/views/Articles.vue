@@ -48,6 +48,7 @@
                 });
             },
             scroll() {
+
                 var $this = this;
                 var scrollTop = this.jquery(window).scrollTop();　　
                 var scrollHeight = this.jquery(document).height();　　
@@ -56,6 +57,7 @@
                     pcount = $this.$store.getters.getPageInfo.pageCount
                 if (cur + 1 <= pcount) {
                     if (scrollTop + windowHeight == scrollHeight) {　
+                        window.removeEventListener('scroll', $this.scroll);
                         $this.loadText = true;
                         setTimeout(function () {
                             var params = {
@@ -67,6 +69,7 @@
                                 url: $this.servUrl + "/api/getArticles",
                                 params
                             }).then((res) => {
+                                window.addEventListener('scroll', $this.scroll)
                                 $this.$store.dispatch("setMobData", res.data);
                                 $this.loadText = false;
                             }, (error) => {
@@ -89,6 +92,11 @@
                 window.addEventListener('scroll', this.scroll)
             }
             this.jquery("html,body").scrollTop(0);
+        },
+        destroyed() {
+            if (this.mobile) {
+                window.removeEventListener('scroll', this.scroll);
+            }
         }
     }
 </script>
