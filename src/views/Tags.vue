@@ -4,7 +4,7 @@
             <h2>{{data.category}}</h2>
             <ul>
                 <li v-for="item in data.data">
-                    <h3>{{$utils.formatDate(item.createDate)}}</h3><a @click="open(item._id)">{{item.title}}</a></li>
+                    <h3>{{$utils.formatDate(item.createDate)}}</h3><a @click="open(item._id)">{{item.title}}({{item.views||0}})</a></li>
             </ul>
         </div>
     </div>
