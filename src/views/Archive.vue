@@ -4,7 +4,7 @@
       <h2>{{data.bDate}}</h2>
       <ul>
         <li v-for="item in data.data">
-          <h3>{{$utils.formatDate(item.createDate)}}</h3><a @click="open(item._id)">{{item.title}}({{item.views||0}})</a></li>
+          <h3>{{$utils.formatDate(item.createDate)}}</h3><a @click="open(item._id)">{{item.title}}<span v-if="isEdit">({{item.views||0}})</span></a></li>
       </ul>
     </div>
   </div>
@@ -12,6 +12,9 @@
 <script>
   export default {
     computed: {
+      isEdit: function () {
+        return this.$store.getters.getLogind
+      },
       listInfo: function () {
         var getdata = this.$store.getters.getTimeLine;
         for (var x in getdata) {

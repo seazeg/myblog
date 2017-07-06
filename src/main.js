@@ -21,14 +21,14 @@ Vue.use(VeeValidate);
 Vue.prototype.jquery = $
 Vue.prototype.$axios = axios
 Vue.prototype.$utils = utils
-Vue.prototype.servUrl = "http://localhost:3000";
-// Vue.prototype.servUrl = "";
+// Vue.prototype.servUrl = "http://localhost:3000";
+Vue.prototype.servUrl = "";
 
 //权限限制
 axios({
   method: "get",
-  url: "http://localhost:3000/api/g"
-  // url: "/api/g"
+  // url: "http://localhost:3000/api/g"
+  url: "/api/g"
 }).then((res) => {
   store.dispatch('setLogind', res.data.logind);
 }, (error) => {
