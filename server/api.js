@@ -115,20 +115,20 @@ router.get('/api/getArticles', (req, res) => {
 //保存文章
 router.post('/api/saveArticle', (req, res) => {
   if (req.session.user) {
-    const id = req.query.id
+    const id = req.body.id
     let article = {
-      title: req.query.title,
-      content: req.query.content,
-      category: req.query.category
+      title: req.body.title,
+      content: req.body.content,
+      category: req.body.category
     }
     if (!!id) {
-      article.updateDate = req.query.date;
+      article.updateDate = req.body.date;
       db.Article.findByIdAndUpdate(id, article, function (err, rs) {
         console.log("更新结束");
         res.json(rs);
       })
     } else {
-      article.createDate = req.query.date;
+      article.createDate = req.body.date;
       db.Article.create(article, function (err, docs) {
         if (err) {
           console.log(err);

@@ -66,7 +66,7 @@
                 $this.$axios({
                     method: "post",
                     url: $this.servUrl + '/api/saveArticle',
-                    params
+                    data:params
                 }).then((res) => {
                     $this.id = res.data._id
                     console.log(res);
