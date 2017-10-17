@@ -17,7 +17,8 @@ const article = resolve => require(['../views/Article.vue'], resolve);
 const archive = resolve => require(['../views/Archive.vue'], resolve);
 const about = resolve => require(['../views/About.vue'], resolve);
 const write = resolve => require(['../views/Write.vue'], resolve);
-const tags = resolve => require(['../views/Tags.vue'],resolve);
+const tags = resolve => require(['../views/Tags.vue'], resolve);
+const photos = resolve => require(['../views/Photos.vue'], resolve);
 
 Vue.use(VueRouter)
 
@@ -55,6 +56,10 @@ const router = new VueRouter({
         path: '/tags',
         name: 'tags',
         component: tags,
+    }, {
+        path: '/photos',
+        name: 'photos',
+        component: photos,
     }, {
         path: '*',
         redirect: '/'
