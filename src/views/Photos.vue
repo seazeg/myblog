@@ -1,55 +1,281 @@
 <template>
-  <div>
-    <div id="viewlist" style="width:100%">
-      <img src="../assets/images/pho/1.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/2.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/3.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/4.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/5.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/6.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/7.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/8.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/9.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
-      <img src="../assets/images/pho/10.jpg" data-url="../assets/images/pho/1.jpg" alt="Picture">
+  <div id="viewlist" class="flex-images" style="width:100%;">
+    <div class="item" :data-w="item.w" :data-h="item.h" v-for="item in d" @mouseenter="imgMenter(item)" @mouseleave="imgMleave(item)">
+      <!-- <span class="tit" v-show="item.show">{{item.name}}</span> -->
+      <img :src="item.src" :alt="item.name">
     </div>
   </div>
 </template>
 <script>
-  import '../../node_modules/imageviewer/dist/viewer.min.js'
-  import '../../node_modules/imageviewer/dist/viewer.min.css'
-  export default {
-    methods: {
+  import '../utils/viewer/viewer'
+  import '../utils/flewImages/jquery.flex-images.min.js'
 
+
+  export default {
+    data() {
+      return {
+        d: [{
+          name: "图1",
+          src: "../src/assets/images/pho/1.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图2",
+          src: "../src/assets/images/pho/2.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图3",
+          src: "../src/assets/images/pho/3.jpg",
+          w: "700",
+          h: "300",
+          show: false
+        }, {
+          name: "图4",
+          src: "../src/assets/images/pho/4.jpg",
+          w: "200",
+          h: "100",
+          show: false
+        }, {
+          name: "图5",
+          src: "../src/assets/images/pho/5.jpg",
+          w: "400",
+          h: "300",
+          show: false
+        }, {
+          name: "图6",
+          src: "../src/assets/images/pho/6.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图7",
+          src: "../src/assets/images/pho/7.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图8",
+          src: "../src/assets/images/pho/8.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图1",
+          src: "../src/assets/images/pho/1.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图2",
+          src: "../src/assets/images/pho/2.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图3",
+          src: "../src/assets/images/pho/3.jpg",
+          w: "700",
+          h: "300",
+          show: false
+        }, {
+          name: "图4",
+          src: "../src/assets/images/pho/4.jpg",
+          w: "200",
+          h: "100",
+          show: false
+        }, {
+          name: "图5",
+          src: "../src/assets/images/pho/5.jpg",
+          w: "400",
+          h: "300",
+          show: false
+        }, {
+          name: "图6",
+          src: "../src/assets/images/pho/6.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图7",
+          src: "../src/assets/images/pho/7.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图8",
+          src: "../src/assets/images/pho/8.jpg",
+          w: "900",
+          h: "300",
+          show: false
+        }, {
+          name: "图1",
+          src: "../src/assets/images/pho/1.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图2",
+          src: "../src/assets/images/pho/2.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图3",
+          src: "../src/assets/images/pho/3.jpg",
+          w: "700",
+          h: "300",
+          show: false
+        }, {
+          name: "图1",
+          src: "../src/assets/images/pho/1.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图2",
+          src: "../src/assets/images/pho/2.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图3",
+          src: "../src/assets/images/pho/3.jpg",
+          w: "700",
+          h: "300",
+          show: false
+        }, {
+          name: "图4",
+          src: "../src/assets/images/pho/4.jpg",
+          w: "200",
+          h: "100",
+          show: false
+        }, {
+          name: "图5",
+          src: "../src/assets/images/pho/5.jpg",
+          w: "400",
+          h: "300",
+          show: false
+        }, {
+          name: "图6",
+          src: "../src/assets/images/pho/6.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图7",
+          src: "../src/assets/images/pho/7.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图8",
+          src: "../src/assets/images/pho/8.jpg",
+          w: "700",
+          h: "300",
+          show: false
+        }, {
+          name: "图4",
+          src: "../src/assets/images/pho/4.jpg",
+          w: "200",
+          h: "100",
+          show: false
+        }, {
+          name: "图5",
+          src: "../src/assets/images/pho/5.jpg",
+          w: "400",
+          h: "300",
+          show: false
+        }, {
+          name: "图6",
+          src: "../src/assets/images/pho/6.jpg",
+          w: "500",
+          h: "300",
+          show: false
+        }, {
+          name: "图7",
+          src: "../src/assets/images/pho/7.jpg",
+          w: "600",
+          h: "300",
+          show: false
+        }, {
+          name: "图8",
+          src: "../src/assets/images/pho/8.jpg",
+          w: "700",
+          h: "300",
+          show: false
+        }]
+      }
+    },
+    methods: {
+      imgMenter(o) {
+        o.show = true
+      },
+      imgMleave(o) {
+        o.show = false
+      }
     },
     mounted() {
-      this.jquery('#viewlist').viewer({
-        show: function () {
-          var docElm = document.documentElement;
-          //W3C  
-          if (docElm.requestFullscreen) {
-            docElm.requestFullscreen();
-          }
-          //FireFox  
-          else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen();
-          }
-          //Chrome等  
-          else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen();
-          }
-          //IE11
-          else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-          }
-        }
-      });
+      var _this = this;
+      var $ = _this.jquery;
+
+      setTimeout(function () {
+        $('#viewlist').flexImages({
+          rowHeight: 300
+        });
+        $('#viewlist').viewer({
+          zoomRatio: 0.5,
+        });
+
+      }, 150);
     }
+
+
+
   }
 </script>
 <style scoped>
-  #viewlist img {
-    width: 200px;
-    margin-right: 10px;
-    display: inline-block;
+  @import '../utils/viewer/viewer.css';
+  @import '../utils/flewImages/jquery.flex-images.css';
+
+  #viewlist {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background: #111;
+  }
+
+ #viewlist .item img{
+opacity: 0.5;
+ }
+
+  #viewlist .item img:hover {
+    opacity: 1;
+    cursor: url('../assets/images/zoom_w.ico'), auto;
+    /* width: 98%;
+    margin: 1%;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s; */
+  }
+
+  #viewlist .item .tit {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    background: #000;
+    width: 100%;
+    opacity: 0.8;
+    font-size: 14px;
+    padding: 5px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    z-index: 10;
   }
 </style>

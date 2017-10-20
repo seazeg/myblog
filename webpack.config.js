@@ -23,7 +23,7 @@ module.exports = {
       loader: 'babel-loader',
       exclude: /node_modules/
     }, {
-      test: /\.(png|jpg|gif|svg)$/,
+      test: /\.(png|jpg|gif|svg|ico)$/,
       loader: 'url-loader',
       options: {
         name: '[name].[ext]?[hash]'
@@ -38,7 +38,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'jquery': 'jquery'
     }
   },
   devServer: {

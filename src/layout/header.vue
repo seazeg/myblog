@@ -1,7 +1,9 @@
 <template>
-    <div class="header" :class="{'fold':isfold,'mgr':this.$route.name=='home',hide:this.$route.name=='write'||this.$route.name=='photos'}">
+    <div class="header" :class="{'fold':isfold,'mgr':this.$route.name=='home',hide:this.$route.name=='write'||this.$route.name=='album'}">
         <div class="logo animated" :class="{'bounce':this.$route.name=='home','flipInX':this.$route.name!='home'}">
-            <router-link to="/"><img :src="src" style="max-width:200px" /></router-link>
+            <router-link to="/">
+                <img :src="src" style="max-width:200px" />
+            </router-link>
         </div>
         <div class="nav animated" :class="{'fadeIn':this.$route.name=='home','hide':this.$route.name=='login'}">
             <div class="box">
@@ -10,6 +12,7 @@
                 <router-link class="animate-link" to="/archive" :class="{'hover':this.$route.name=='archive'}">归档</router-link>
                 <router-link class="animate-link" to="/tags" :class="{'hover':this.$route.name=='tags'}">标签</router-link>
                 <router-link class="animate-link" to="/about" :class="{'hover':this.$route.name=='about'}">关于</router-link>
+                <router-link class="animate-link" to="/album" :class="{'hover':this.$route.name=='album'}" @click="fullScreen()">摄影</router-link>
                 <router-link v-if="logind" class="animate-link" to="/write" :class="{'hover':this.$route.name=='write'}">撰写</router-link>
             </div>
         </div>
@@ -30,6 +33,25 @@
                     return require('../assets/images/logo.png')
                 } else {
                     return require('../assets/images/logo@2x.png')
+                }
+            },
+            fullScreen() {
+                var docElm = document.documentElement;
+                //W3C  
+                if (docElm.requestFullscreen) {
+                    docElm.requestFullscreen();
+                }
+                //FireFox  
+                else if (docElm.mozRequestFullScreen) {
+                    docElm.mozRequestFullScreen();
+                }
+                //Chrome等  
+                else if (docElm.webkitRequestFullScreen) {
+                    docElm.webkitRequestFullScreen();
+                }
+                //IE11
+                else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
                 }
             }
         }
