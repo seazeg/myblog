@@ -1,16 +1,14 @@
 <template>
   <div id="viewlist" class="flex-images" style="width:100%;">
-    <div class="item" :data-w="item.w" :data-h="item.h" v-for="item in d" @mouseenter="imgMenter(item)" @mouseleave="imgMleave(item)">
+    <div class="item" :data-w="item.w" :data-h="item.h" v-for="item in d">
       <!-- <span class="tit" v-show="item.show">{{item.name}}</span> -->
-      <img :src="item.src" :alt="item.name">
+      <img ref="img" :src="item.src" :alt="item.name" v-show="item.show">
     </div>
   </div>
 </template>
 <script>
   import '../utils/viewer/viewer'
-  import '../utils/flewImages/jquery.flex-images.min.js'
-
-
+  // import '../utils/flewImages/jquery.flex-images.min.js'
   export default {
     data() {
       return {
@@ -18,7 +16,7 @@
           name: "图1",
           src: "../src/assets/images/pho/1.jpg",
           w: "600",
-          h: "300",
+          h: "400",
           show: false
         }, {
           name: "图2",
@@ -210,26 +208,33 @@
       }
     },
     methods: {
-      imgMenter(o) {
-        o.show = true
-      },
-      imgMleave(o) {
-        o.show = false
-      }
+      // imgMenter(o) {
+      //   o.show = false
+      // },
+      // imgMleave(o) {
+      //   o.show = false
+      // }
     },
     mounted() {
       var _this = this;
       var $ = _this.jquery;
+      $('#viewlist').viewer({
+        zoomRatio: 0.5,
+        hide: function () {
+          _this.$router.replace({
+            path: '/album'
+          })
+        }
+      });
 
-      setTimeout(function () {
-        $('#viewlist').flexImages({
-          rowHeight: 300
-        });
-        $('#viewlist').viewer({
-          zoomRatio: 0.5,
-        });
+      _this.$refs.img[0].click();
 
-      }, 150);
+      // setTimeout(function () {
+      //   $('#viewlist').flexImages({
+      //     rowHeight: 300
+      //   });
+
+      // }, 150);
     }
 
 
@@ -238,7 +243,7 @@
 </script>
 <style scoped>
   @import '../utils/viewer/viewer.css';
-  @import '../utils/flewImages/jquery.flex-images.css';
+  /* @import '../utils/flewImages/jquery.flex-images.css'; */
 
   #viewlist {
     width: 100%;
@@ -249,21 +254,16 @@
     right: 0;
     bottom: 0;
     overflow: auto;
-    background: #111;
+    background: #2f3238;
   }
-
- #viewlist .item img{
-opacity: 0.5;
- }
-
-  #viewlist .item img:hover {
+  /* #viewlist .item img {
+    opacity: 0.5;
+  } */
+  /* #viewlist .item img:hover {
     opacity: 1;
     cursor: url('../assets/images/zoom_w.ico'), auto;
-    /* width: 98%;
-    margin: 1%;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s; */
-  }
+
+  }*/
 
   #viewlist .item .tit {
     position: absolute;

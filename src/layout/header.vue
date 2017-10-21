@@ -1,5 +1,5 @@
 <template>
-    <div class="header" :class="{'fold':isfold,'mgr':this.$route.name=='home',hide:this.$route.name=='write'||this.$route.name=='album'}">
+    <div class="header" :class="{'fold':isfold,'mgr':this.$route.name=='home',hide:this.$route.name=='write'||this.$route.name=='album'||this.$route.name=='photos'}">
         <div class="logo animated" :class="{'bounce':this.$route.name=='home','flipInX':this.$route.name!='home'}">
             <router-link to="/">
                 <img :src="src" style="max-width:200px" />
@@ -29,10 +29,19 @@
                 return this.$store.getters.getLogind
             },
             src() {
-                if (window.innerWidth > 600) {
-                    return require('../assets/images/logo.png')
+                if (this.$route.name == 'album') {
+                    if (window.innerWidth > 600) {
+                        return require('../assets/images/logo_w.png')
+                    } else {
+                        return require('../assets/images/logo_w@2x.png')
+                    }
+
                 } else {
-                    return require('../assets/images/logo@2x.png')
+                    if (window.innerWidth > 600) {
+                        return require('../assets/images/logo.png')
+                    } else {
+                        return require('../assets/images/logo@2x.png')
+                    }
                 }
             },
             fullScreen() {

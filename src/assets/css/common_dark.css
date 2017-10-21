@@ -1,0 +1,13 @@
+.header.dark {
+    background: #111;
+    /*border-top: 1px solid #F1103A;*/
+
+    -webkit-transition: all 1S ease-out;
+    -moz-transition: all 1S ease-out;
+    -o-transition: all 1S ease-out;
+}
+
+.header.dark a{
+    color: #fff;
+}
+
