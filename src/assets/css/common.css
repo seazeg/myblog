@@ -576,7 +576,7 @@
         color: #F1103A
     }
     .float a.home i {
-        font-size: 32px;
+        font-size: 36px;
     }
     .float a.home i:hover {
         color: #F1103A;
@@ -590,4 +590,12 @@
     .float {
         display: none;
     }
+}
+
+
+.upload{
+    width:600px;
+    margin:0 auto;
+    margin-top:100px;
+
 }

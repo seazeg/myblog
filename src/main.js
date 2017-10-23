@@ -5,6 +5,7 @@ import axios from 'axios'
 import VeeValidate from 'vee-validate';
 // import VueResource from 'vue-resource'
 import './layout/index'
+import 'iview/dist/styles/iview.css'
 import './assets/css/base.css'
 import './assets/css/font.css'
 import './assets/fonts/iconfont.css'
@@ -14,10 +15,11 @@ import './assets/css/common_dark.css'
 import $ from 'jquery'
 import utils from './utils/utils'
 import store from './service/'
+import iView from 'iview';
 
 
 Vue.use(VeeValidate);
-
+Vue.use(iView);
 
 Vue.prototype.jquery = $
 Vue.prototype.$axios = axios

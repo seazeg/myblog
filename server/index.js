@@ -10,6 +10,7 @@ const resolve = file => path.resolve(__dirname, file)
 const api = require('./api')
 const app = express()
 
+
 // const createBundleRenderer = require('vue-server-renderer').createBundleRenderer
 
 app.set('port', (process.env.port || 3000));

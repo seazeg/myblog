@@ -1,7 +1,11 @@
 <template>
     <div class="float animated">
-        <div class="top" @click="top()" :class="{'hide':this.$route.name=='home'||this.$route.name=='write'||this.$route.name=='login'}"><i class="iconfont icon-tophover"></i></div>
-        <router-link to='/' class="home" :class="{'hide':this.$route.name!='write'}" title="back home"><i class="iconfont icon-fanhuishouye"></i></router-link>
+        <div class="top" @click="top()" :class="{'hide':this.$route.name=='home'||this.$route.name=='write'||this.$route.name=='login'||this.$route.name=='album'||this.$route.name=='upload'}">
+            <i class="iconfont icon-tophover"></i>
+        </div>
+        <router-link to='/' class="home" :class="{'hide':this.$route.name!='write'&&this.$route.name!='album'}" title="back home">
+            <i class="iconfont icon-fanhuishouye"></i>
+        </router-link>
     </div>
 </template>
 <script>

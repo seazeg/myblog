@@ -20,6 +20,7 @@ const write = resolve => require(['../views/Write.vue'], resolve);
 const tags = resolve => require(['../views/Tags.vue'], resolve);
 const album = resolve => require(['../views/Album.vue'], resolve);
 const photos = resolve => require(['../views/Photos.vue'], resolve);
+const upload = resolve => require(['../views/Upload.vue'], resolve);
 
 Vue.use(VueRouter)
 
@@ -61,10 +62,14 @@ const router = new VueRouter({
         path: '/album',
         name: 'album',
         component: album,
-    },{
+    }, {
         path: '/photos',
         name: 'photos',
         component: photos,
+    }, {
+        path: '/upload',
+        name: 'upload',
+        component: upload,
     }, {
         path: '*',
         redirect: '/'

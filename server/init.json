@@ -1,55 +1,38 @@
 [{
-    "type": "User",
-    "username": "admin",
-    "password": "123456",
-    "role": "0"
+    "albumId": "1",
+    "title": "秋意浓",
+    "albumPic": "//",
+    "createDate": "2017-10-23",
+    "type": "Album"
   },
   {
-    "title": "Git常用命令汇总",
-    "content": "这年头不用个git,还真跟不上形式了,对git命令做一个简单的汇总,方便查阅.\n\n# 1.初始化Git库\n```bash\n#!当前目录新建一个Git代码库\n$ git init\n\n#!新建一个目录，将其初始化为Git代码库\n$ git init [project-name]\n\n#!下载一个项目和它的整个代码历史\n$ git clone [url]\n```\n\n# 2.常用配置\n```linux\n#!显示当前的Git配置\n$ git config --list\n\n#!编辑Git配置文件\n$ git config -e [--global]\n\n#!设置提交代码时的用户信息\n$ git config [--global] user.name \"[name]\"\n$ git config [--global] user.email \"[email address]\"\n\n```\n\n# 3.增加/删除到缓存区\n```linux\n#!添加指定文件到暂存区\n$ git add [file1] [file2] ...\n\n#!添加指定目录到暂存区，包括子目录\n$ git add [dir]\n\n#!添加当前目录的所有文件到暂存区\n$ git add .\n\n#!添加每个变化前，都会要求确认\n$ git add -p\n\n#!删除工作区文件，并且将这次删除放入暂存区\n$ git rm [file1] [file2] ...\n\n#!停止追踪指定文件，但该文件会保留在工作区\n$ git rm --cached [file]\n\n#!改名文件，并且将这个改名放入暂存区\n$ git mv [file-original] [file-renamed]\n```\n\n# 4.代码提交到本地仓库\n```linux\n#!提交暂存区到仓库区\n$ git commit -m [message]\n\n#!提交暂存区的指定文件到仓库区\n$ git commit [file1] [file2] ... -m [message]\n\n#!提交工作区自上次commit之后的变化，直接到仓库区\n$ git commit -a\n\n#!提交时显示所有diff信息\n$ git commit -v\n\n#!使用一次新的commit，替代上一次提交\n#!如果代码没有任何新变化，则用来改写上一次commit的提交信息\n$ git commit --amend -m [message]\n\n#!重做上一次commit，并包括指定文件的新变化\n$ git commit --amend [file1] [file2] ...\n```\n\n# 5.远程推送/同步\n```linux\n#!下载远程仓库的所有变动\n$ git fetch [remote]\n\n#!显示所有远程仓库\n$ git remote -v\n\n#!显示某个远程仓库的信息\n$ git remote show [remote]\n\n#!增加一个新的远程仓库，并命名\n$ git remote add [shortname] [url]\n\n#!取回远程仓库的变化，并与本地分支合并\n$ git pull [remote] [branch]\n\n#!上传本地指定分支到远程仓库\n$ git push [remote] [branch]\n\n#!强行推送当前分支到远程仓库，即使有冲突\n$ git push [remote] --force\n\n#!推送所有分支到远程仓库\n$ git push [remote] --all\n```\n\n# 6.分支操作\n```linux\n#!列出所有本地分支\n$ git branch\n\n#!列出所有远程分支\n$ git branch -r\n\n#!列出所有本地分支和远程分支\n$ git branch -a\n\n#!新建一个分支，但依然停留在当前分支\n$ git branch [branch-name]\n\n#!新建一个分支，并切换到该分支\n$ git checkout -b [branch]\n\n#!新建一个分支，指向指定commit\n$ git branch [branch] [commit]\n\n#!新建一个分支，与指定的远程分支建立追踪关系\n$ git branch --track [branch] [remote-branch]\n\n#!切换到指定分支，并更新工作区\n$ git checkout [branch-name]\n\n#!切换到上一个分支\n$ git checkout -\n\n#!建立追踪关系，在现有分支与指定的远程分支之间\n$ git branch --set-upstream [branch] [remote-branch]\n\n#!合并指定分支到当前分支\n$ git merge [branch]\n\n#!选择一个commit，合并进当前分支\n$ git cherry-pick [commit]\n\n#!删除分支\n$ git branch -d [branch-name]\n\n#!删除远程分支\n$ git push origin --delete [branch-name]\n$ git branch -dr [remote/branch]\n```\n\n\n# 7.还原操作\n```linux\n#!恢复暂存区的指定文件到工作区\n$ git checkout [file]\n\n#!恢复某个commit的指定文件到暂存区和工作区\n$ git checkout [commit] [file]\n\n#!恢复暂存区的所有文件到工作区\n$ git checkout .\n\n#!重置暂存区的指定文件，与上一次commit保持一致，但工作区不变\n$ git reset [file]\n\n#!重置暂存区与工作区，与上一次commit保持一致\n$ git reset --hard\n\n#!重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变\n$ git reset [commit]\n\n#!重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致\n$ git reset --hard [commit]\n\n#!重置当前HEAD为指定commit，但保持暂存区和工作区不变\n$ git reset --keep [commit]\n\n#!新建一个commit，用来撤销指定commit\n#!后者的所有变化都将被前者抵消，并且应用到当前分支\n$ git revert [commit]\n\n#!暂时将未提交的变化移除，稍后再移入\n$ git stash\n$ git stash pop\n```\n\n# 8.信息查看\n```linux\n#!显示有变更的文件\n$ git status\n\n#!显示当前分支的版本历史\n$ git log\n\n#!显示commit历史，以及每次commit发生变更的文件\n$ git log --stat\n\n#!搜索提交历史，根据关键词\n$ git log -S [keyword]\n\n#!显示某个commit之后的所有变动，每个commit占据一行\n$ git log [tag] HEAD --pretty=format:%s\n\n#!显示某个commit之后的所有变动，其\"提交说明\"必须符合搜索条件\n$ git log [tag] HEAD --grep feature\n\n#!显示某个文件的版本历史，包括文件改名\n$ git log --follow [file]\n$ git whatchanged [file]\n\n#!显示指定文件相关的每一次diff\n$ git log -p [file]\n\n#!显示过去5次提交\n$ git log -5 --pretty --oneline\n\n#!显示所有提交过的用户，按提交次数排序\n$ git shortlog -sn\n\n#!显示指定文件是什么人在什么时间修改过\n$ git blame [file]\n\n#!显示暂存区和工作区的差异\n$ git diff\n\n#!显示暂存区和上一个commit的差异\n$ git diff --cached [file]\n\n#!显示工作区与当前分支最新commit之间的差异\n$ git diff HEAD\n\n#!显示两次提交之间的差异\n$ git diff [first-branch]...[second-branch]\n\n#!显示今天你写了多少行代码\n$ git diff --shortstat \"@{0 day ago}\"\n\n#!显示某次提交的元数据和内容变化\n$ git show [commit]\n\n#!显示某次提交发生变化的文件\n$ git show --name-only [commit]\n\n#!显示某次提交时，某个文件的内容\n$ git show [commit]:[filename]\n\n#!显示当前分支的最近几次提交\n$ git reflog\n```\n\n\n\n",
-    "type": "Article",
-    "category": "测试分类",
-    "createDate": "2017-06-07",
-    "updateDate": "2017-06-07"
+    "albumId": "1",
+    "name": "图片1",
+    "src": "//",
+    "width": "300",
+    "height": "200",
+    "createDate": "2017-10-23",
+    "show": false,
+    "type": "Photos"
   },
   {
-    "title": "Linux 常用命令汇总",
-    "content": "# 1.常用操作命令\n```bash\n//显示文件或目录\nls　　        \n     -l           //列出文件详细信息l(list)\n     -a           //列出当前目录下所有文件及目录，包括隐藏的a(all)\n\n#创建目录\nmkdir         \n     -p           //创建目录，若无父目录，则创建p(parent)\n\n//切换目录\ncd\n\n//创建空文件                \ntouch      \n\n//创建带有内容的文件。    \necho      \n\n//查看文件内容      \ncat              \n\n//拷贝\ncp\n\n//移动或重命名                \nmv               \n\n//删除文件\nrm              \n     -r            //递归删除，可删除子目录及文件\n     -f            //强制删除\n\n//在文件系统中搜索某文件\nfind              \n\n//统计文本中行数、字数、字符数\nwc                \n\n//在文本文件中查找某个字符串\ngrep             \n\n//删除空目录\nrmdir          \n\n//树形结构显示目录，需要安装tree包\ntree             \n\n//显示当前目录\npwd              \n\n//创建链接文件\nln                  \n\n//分页显示文本文件内容\nmore、less  \n\n//显示文件头、尾内容\nhead、tail    \n\n//命令行全屏模式\nctrl+alt+F1  \n```\n\n# 1.常用操作命令\n```linux\n#显示指定文件的详细信息，比ls更详细\nstat              \n\n#显示在线登陆用户\nwho              \n\n#显示当前操作用户\nwhoami          \n\n#显示主机名\nhostname      \n\n#显示系统信息\nuname           \n\n#动态显示当前耗费资源最多进程信息\ntop               \n\n#显示瞬间进程状态 ps -aux\nps                  \n\n#查看目录大小 du -h /home带有单位显示目录信息\ndu                  \n\n//# 查看磁盘大小 df -h 带有单位显示磁盘信息\ndf                 \n\n//#查看网络情况\nifconfig          \n\n//#测试网络连通\nping                \n\n//#显示网络状态信息\nnetstat          \n\n//#清屏\nclear              \n\n//#杀死进程，可以先用ps 或 top命令查看进程的id，然后再用kill命令杀死进程\nkill  \n\n\n```\n\n\n",
-    "type": "Article",
-    "category": "测试分类",
-    "createDate": "2017-06-07",
-    "updateDate": "2017-06-07"
+    "albumId": "1",
+    "name": "图片2",
+    "src": "//",
+    "width": "400",
+    "height": "200",
+    "createDate": "2017-10-23",
+    "show": false,
+    "type": "Photos"
   },
   {
-    "title": "vuex在IE中报错的解决方法",
-    "content": "在IE9 之后的版本中使用vuex时，会出现如下报错\n```\n [vuex] vuex requires a Promise polyfill in this browser.\n\n```\n##### 解决方法:\n1.需要打一个polyfill兼容\n```\n$ npm i --save-dev babel-polyfill\n```\n2.修改webpack.config设置\n```\nmodule.exports = {\n...\n  entry: {\n    app: ['babel-polyfill', './src/main.js']\n  },\n...\n}\n```\n重新编译后可解决此问题 \n\n\n\n",
-    "type": "Article",
-    "category": "测试分类",
-    "createDate": "2017-06-07",
-    "updateDate": "2017-06-07"
-  },
-  {
-    "title": "vue中webpack的css-loader和vue-style-loader配置",
-    "content": "在webpack中，可以通过css-loader实现在js中直接通过require，import等方式引用css.  利用style-loader在html中以style的方式嵌入css。\n\n##### 1.通过npm方式安装 \n```\nnpm i --save-dev css-loader,vue-style-loader \n```\n##### 2.在webpack.config配置中增加\n```javascript\nmodule.exports = {\n...\n  module.exports = {\n     module: {\n       rules: [{\n          test: /\\.css$/,\n          loader: [ 'vue-style-loader', 'css-loader' ]\n       }]\n   }\n...\n}\n```\n\n3.在main.js中就可以通过import引用css\n```javascript\nimport './assets/css/base.css'\n```\n",
-    "type": "Article",
-    "category": "测试分类",
-    "createDate": "2017-06-07",
-    "updateDate": "2017-06-07"
-  },
-  {
-    "title": "单页首屏优化 —— Vue路由组件懒加载",
-    "content": "当webpack打包构建应用时，js包会变得非常大（1mb+），所以需要对不同路由所对应的组件分割成不同的代码块，当路由被访问时候才进行加载。\n\n结合 Vue 的 <a href='https://cn.vuejs.org/v2/guide/components.html#camelCase-vs-kebab-case'>异步组件</a> 和 Webpack 的 <a href='https://webpack.js.org/guides/code-splitting-async/#require-ensure-'>code splitting feature</a>来实现路由懒加载\n\n##### 方法如下：\n将import引用方式\n```javascript\nimport login from './login.vue'\n\nconst router = new VueRouter({\n  routes: [\n    { path: '/login ', component: login }\n  ]\n})\n\n```\n改写成\n```javascript\nconst login = resolve => {\n  /* require.ensure 是 Webpack 的特殊语法，用来设置 code-split point\n  （代码分块）*/\n  require.ensure(['./login.vue'], () => {\n    resolve(require('./login.vue'))\n  })\n}\n/* 另一种写法 */\nconst login = resolve => require(['./login.vue'], resolve);\n\nconst router = new VueRouter({\n  routes: [\n    { path: '/login ', component: login }\n  ]\n})\n```\n即可实现路由懒加载\n\n\n",
-    "type": "Article",
-    "category": "测试分类",
-    "createDate": "2017-06-07",
-    "updateDate": "2017-06-07"
-  },
-  {
-    "title": "CentOS 7部署 Node.js + MongoDB 到阿里云esc",
-    "content": "# 一 . 购买阿里云esc\n我选择的是阿里云esc，部署一个新的实例，镜像选择CentOS 7 64位\n\n# 二 . 使用Xshell连接远程esc\n用PuTTY也可以，看个人喜好。\n\n主机：实例的公网ip\n\n协议：ssh \n\n端口号：22 \n\n账号：root\n\n密码：建实例安镜像时候自己设置的密码\n\n成功进入后会显示\n```bash\nWelcome to Alibaba Cloud Elastic Compute Service !\n[root@xxxxxxxxxxxx ~]# \n\n```\n\n# 三 . 安装Node.js环境\n##### 1 . wget命令下载Node.js安装包\n\n该安装包是编译好的文件，解压之后，在bin文件夹中就已存在node和npm，无需重复编译。\n```bash\n# wget https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-x64.tar.xz\n```\n##### 2 . 解压文件\n```bash\n# tar xvf node-v6.9.5-linux-x64.tar.xz\n```\n\n##### 3 . 创建软链接，使node和npm命令全局有效\n```bash\n# ln -s /root/node-v6.9.5-linux-x64/bin/node /usr/local/bin/node\n# ln -s /root/node-v6.9.5-linux-x64/bin/npm /usr/local/bin/npm\n```\n##### 4 . 确认安装成功\n```bash\n# node -v\n# npm -v\n```\n##### 4 . 安装node服务管理模块forever\n###### 全局安装\n```bash\n# npm install -g forever\n```\n###### 创建forever软连接\n```bash\n# ln -s /root/node-v6.9.5-linux-x64/bin/forever /usr/local/bin/forever\n```\n###### 启动forever\n```bash\n# forever start '/home/www/srv/index.js'\n```\n\n\n\n\n# 四 . 安装MongoDB\n##### 1 . 创建一个 mongodb-org.repo 文件\n```bash\n# sudo touch /etc/yum.repos.d/mongodb-org.repo\n```\n##### 2 . 输入以下内容后\n```bash\n[mongodb-org]\nname=MongoDB Repository\nbaseurl=http://mirrors.aliyun.com/mongodb/yum/redhat/7Server/mongodb-org/3.2/x86_64/\ngpgcheck=0\nenabled=1\n```\n##### 3 . 通过yum安装MongoDB\n```bash\n# sudo yum install -y mongodb-org\n```\n##### 4 . 启动MongoDB\n```bash\n# sudo service mongod start\n```\n##### 5 . 设置开机启动MongoDB服务\n```bash\n# sudo chkconfig mongod on\n```\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-    "type": "Article",
-    "category": "测试分类",
-    "createDate": "2017-06-07",
-    "updateDate": "2017-06-07"
+    "albumId": "1",
+    "name": "图片3",
+    "src": "//",
+    "width": "600",
+    "height": "200",
+    "createDate": "2017-10-23",
+    "show": false,
+    "type": "Photos"
   }
 ]

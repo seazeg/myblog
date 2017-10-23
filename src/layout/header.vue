@@ -1,5 +1,5 @@
 <template>
-    <div class="header" :class="{'fold':isfold,'mgr':this.$route.name=='home',hide:this.$route.name=='write'||this.$route.name=='album'||this.$route.name=='photos'}">
+    <div class="header" :class="{'fold':isfold,'mgr':this.$route.name=='home',hide:this.$route.name=='write'||this.$route.name=='album'||this.$route.name=='photos'||this.$route.name=='upload'}">
         <div class="logo animated" :class="{'bounce':this.$route.name=='home','flipInX':this.$route.name!='home'}">
             <router-link to="/">
                 <img :src="src" style="max-width:200px" />
