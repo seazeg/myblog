@@ -21,7 +21,7 @@
             </FormItem>
             <FormItem label="封面选择">
                 <Select v-model="albumItem.albumPic" placeholder="请选择相册">
-                    <Option v-for="item in albumSel" :value="item.response.src.replace(/\\/, '/')">{{item.name}}</Option>
+                    <Option v-for="item in albumSel" :value="item.response.src.replace(/\\/g, '/')">{{item.name}}</Option>
                 </Select>
             </FormItem>
             <FormItem>
@@ -69,7 +69,8 @@
             },
             upload(response, file, fileList) {
                 this.albumItem.src.push({
-                    src: file.response.src.replace(/\\/, '/'),
+                    src: file.response.src.replace(/\\/g, '/'),
+                    name: file.name.split(".")[0],
                     show: false
                 });
                 this.albumSel.push(file);

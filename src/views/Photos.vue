@@ -1,7 +1,7 @@
 <template>
   <div id="photos" class="photos-box" style="width:100%;">
     <div class="item" v-for="item in data">
-      <img ref="img" :src="'../'+item.src" v-show="item.src.show">
+      <img ref="img" :src="'../'+item.src" v-show="item.show" :alt="item.name">
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@
           params
         }).then((res) => {
           _this.data = JSON.parse(res.data.data.src);
+          console.log(_this.data);
         }, (error) => {
           console.log(error);
         });
@@ -38,6 +39,7 @@
       setTimeout(function () {
         $('#photos').viewer({
           zoomRatio: 0.5,
+          interval: 3000,
           hide: function () {
             _this.$router.replace({
               path: '/album'
