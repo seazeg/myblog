@@ -1,38 +1,23 @@
-[{
-    "albumId": "1",
-    "title": "秋意浓",
-    "albumPic": "//",
+[
+  {
+    "title": "图片1",
+    "src": "//",
     "createDate": "2017-10-23",
+    "albumPic": "//",
     "type": "Album"
   },
   {
-    "albumId": "1",
-    "name": "图片1",
+    "title": "图片2",
     "src": "//",
-    "width": "300",
-    "height": "200",
     "createDate": "2017-10-23",
-    "show": false,
-    "type": "Photos"
+    "albumPic": "//",
+    "type": "Album"
   },
   {
-    "albumId": "1",
-    "name": "图片2",
+    "title": "图片3",
     "src": "//",
-    "width": "400",
-    "height": "200",
     "createDate": "2017-10-23",
-    "show": false,
-    "type": "Photos"
-  },
-  {
-    "albumId": "1",
-    "name": "图片3",
-    "src": "//",
-    "width": "600",
-    "height": "200",
-    "createDate": "2017-10-23",
-    "show": false,
-    "type": "Photos"
+    "albumPic": "//",
+    "type": "Album"
   }
-]
+] 

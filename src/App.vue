@@ -24,8 +24,10 @@
     },
     methods: {
       scroll() {
-        this.scrollTop = document.body.scrollTop;
+        this.scrollTop = document.documentElement.scrollTop;
+          console.log(document.documentElement.scrollTop)
         if (this.scrollTop > 55) {
+        
           this.isfold = true;
         } else {
           this.isfold = false;

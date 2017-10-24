@@ -63,7 +63,7 @@ const router = new VueRouter({
         name: 'album',
         component: album,
     }, {
-        path: '/photos',
+        path: '/photos/:id',
         name: 'photos',
         component: photos,
     }, {

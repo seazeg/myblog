@@ -593,9 +593,16 @@
 }
 
 
-.upload{
+.upload-box .upload{
     width:600px;
     margin:0 auto;
-    margin-top:100px;
+    margin-top:10px;
+}
 
+.upload-box .title{
+    width:600px;
+    margin:0 auto;
+    font-size: 40px;
+    text-align: center;
+    padding:20px;
 }

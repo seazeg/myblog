@@ -1515,7 +1515,7 @@ figure.effect-bubba figcaption::after {
 }
 
 figure.effect-bubba h2 {
-	padding-top: 30%;
+	padding-top: 28%;
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
 	-webkit-transform: translate3d(0,-20px,0);

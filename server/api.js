@@ -6,12 +6,12 @@ const db = require('./db')
 const fn = () => {}
 
 //***上传功能****start
-var createFolder = function(folder){
-  try{
-      fs.accessSync(folder); 
-  }catch(e){
-      fs.mkdirSync(folder);
-  }  
+var createFolder = function (folder) {
+  try {
+    fs.accessSync(folder);
+  } catch (e) {
+    fs.mkdirSync(folder);
+  }
 };
 
 var uploadFolder = 'upload/';
@@ -19,19 +19,30 @@ createFolder(uploadFolder);
 // 通过 filename 属性定制
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, uploadFolder);    // 保存的路径，备注：需要自己创建
+    cb(null, uploadFolder); // 保存的路径，备注：需要自己创建
   },
   filename: function (req, file, cb) {
-      // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
-      cb(null, file.originalname);  
+    // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
+    cb(null, +Date.now() + file.originalname);
   }
-});
+})
 
 // 通过 storage 选项来对 上传行为 进行定制化
-var upload = multer({ storage: storage })
+var upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 2
+  },
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+      cb(null, true)
+    } else {
+      cb(new Error('不允许上传此类型文件'))
+    }
+  }
+})
 
 router.post('/api/upload', upload.single('upload'), function (req, res, next) {
-
   var file = req.file;
   console.log(file)
   console.log('文件类型：%s', file.mimetype);
@@ -42,6 +53,7 @@ router.post('/api/upload', upload.single('upload'), function (req, res, next) {
   res.json({
     src: file.path
   })
+
 });
 //***上传功能****end
 
@@ -200,7 +212,7 @@ router.post('/api/deleteArticle', (req, res) => {
 router.get('/api/getAlbum', (req, res) => {
   const _curpage = +req.query.curPage || 1,
     _pagesize = +req.query.pageSize || 9999;
-  const fieldArr = "albumId title createDate"
+  const fieldArr = "_id title subTitle desc albumPic createDate"
 
   const query = db.Album.find({});
   query.skip((_curpage - 1) * _pagesize);
@@ -213,9 +225,9 @@ router.get('/api/getAlbum', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      //计算数据总数
       db.Album.find(function (err, rs) {
         result = {
+          logind: true,
           data: doc,
           pageInfo: {
             curPage: _curpage,
@@ -224,6 +236,9 @@ router.get('/api/getAlbum', (req, res) => {
             pageTotal: rs.length,
           },
         };
+        if (req.session.user) {
+          result.logind = false
+        }
         res.json(result)
       });
     }
@@ -232,79 +247,56 @@ router.get('/api/getAlbum', (req, res) => {
 
 //获取照片列表
 router.get('/api/getPhotos', (req, res) => {
-  const _curpage = +req.query.curPage || 1,
-    _pagesize = +req.query.pageSize || 9999;
-  const fieldArr = "albumId name src width height createDate show";
-
-  const query = db.Photos.find({});
-  query.skip((_curpage - 1) * _pagesize);
-  query.limit(_pagesize);
-  query.sort({
-    createDate: -1
-  });
-  query.select(fieldArr);
-  query.exec(function (err, doc) { //回调
+  const _id = req.query.id;
+  db.Album.findOne({
+    _id
+  }, (err, doc) => {
     if (err) {
-      res.send(err);
+      console.log(err)
+    } else if (doc) {
+      var json = {
+        logind: false,
+        data: doc
+      }
+      if (req.session.user) {
+        json.logind = true
+      }
+      res.json(json)
+    }
+  })
+})
+
+
+//保存相册和照片
+router.post('/api/saveAlbumPhotos', (req, res) => {
+  if (req.session.user) {
+    if (!!req.body.albumPic && !!req.body.title && !!req.body.subTitle && !!req.body.desc && !!req.body.src && !!req.body.date) {
+      let album = {
+        albumPic: req.body.albumPic,
+        title: req.body.title,
+        subTitle: req.body.subTitle,
+        desc: req.body.desc,
+        src: JSON.stringify(req.body.src),
+        createDate: req.body.date
+      }
+
+      db.Album.create(album, function (err, docs) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('创建相册成功：' + docs);
+          res.json({
+            logind: true,
+            data: docs
+          });
+        }
+      });
     } else {
-      //计算数据总数
-      db.Photos.find(function (err, rs) {
-        result = {
-          data: doc,
-        };
-        res.json(result)
+      res.json({
+        resultMsg: "有字段为空!"
       });
     }
-  });
-})
 
-
-//保存相册
-router.post('/api/saveAlbum', (req, res) => {
-  if (req.session.user) {
-
-    let album = {
-      albumId: req.body.albumId,
-      title: req.body.title,
-      albumPic: req.body.albumPic,
-      createDate: req.body.date,
-    }
-    db.Album.create(album, function (err, docs) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('创建相册成功：' + docs);
-        res.json(docs);
-      }
-    });
-  } else {
-    res.json({
-      logind: false
-    });
-  }
-})
-
-//保存图片
-router.post('/api/savePhotos', (req, res) => {
-  if (req.session.user) {
-    console.log(req.body)
-    let photos = {
-      albumId: req.body.albumId,
-      name: req.body.name,
-      src: req.body.src,
-      width: req.body.width,
-      height: req.body.height,
-      createDate: req.body.date,
-      show: false
-    }
-    db.Photos.create(photos, function (err, docs) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('保存照片成功：' + docs);
-        res.json(docs);
-      }
-    });
   } else {
     res.json({
       logind: false
