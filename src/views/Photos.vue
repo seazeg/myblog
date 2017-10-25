@@ -38,8 +38,10 @@
       //异步延时
       setTimeout(function () {
         $('#photos').viewer({
-          zoomRatio: 0.5,
+          zoomRatio: 0.25,
           interval: 3000,
+          minZoomRatio: 0.5,
+          maxZoomRatio: 2,
           hide: function () {
             _this.$router.replace({
               path: '/album'

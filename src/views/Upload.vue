@@ -26,7 +26,7 @@
             </FormItem>
             <FormItem>
                 <Button type="primary" @click="subAlbum()">提交</Button>
-                <Button type="ghost" style="margin-left: 8px">取消</Button>
+                <Button type="ghost" style="margin-left: 8px" @click="clear()">清空</Button>
             </FormItem>
         </Form>
     </div>
@@ -74,6 +74,16 @@
                     show: false
                 });
                 this.albumSel.push(file);
+            },
+            clear() {
+                this.albumItem = {
+                    albumPic: "",
+                    title: "",
+                    subTitle: "",
+                    desc: "",
+                    src: []
+                }
+                this.albumSel = []
             }
         }
     }
