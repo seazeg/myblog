@@ -78,3 +78,6 @@
         }
     }
 </script>
+<style scoped>
+    @import '../../node_modules/iview/dist/styles/iview.css';
+</style>
