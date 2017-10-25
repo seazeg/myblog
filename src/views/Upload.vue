@@ -12,7 +12,7 @@
                 <Input v-model="albumItem.desc" placeholder="请输入描述"></Input>
             </FormItem>
             <FormItem label="图片上传">
-                <Upload multiple type="drag" name="upload" :action="action" :on-success="upload">
+                <Upload ref="upload" accept="image/*" :format="['jpeg','jpg','png','gif']" multiple type="drag" name="upload" :action="action" :on-success="upload" :max-size="2048" >
                     <div style="padding: 20px 0">
                         <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                         <p>点击或将文件拖拽到这里上传</p>
@@ -20,7 +20,7 @@
                 </Upload>
             </FormItem>
             <FormItem label="封面选择">
-                <Select v-model="albumItem.albumPic" placeholder="请选择相册">
+                <Select v-model="albumItem.albumPic" placeholder="请选择封面">
                     <Option v-for="item in albumSel" :value="item.response.src.replace(/\\/g, '/')">{{item.name}}</Option>
                 </Select>
             </FormItem>
@@ -83,7 +83,8 @@
                     desc: "",
                     src: []
                 }
-                this.albumSel = []
+                this.albumSel = [];
+                this.$refs["upload"].clearFiles();
             }
         }
     }
