@@ -12,7 +12,8 @@
                 <Input v-model="albumItem.desc" placeholder="请输入描述"></Input>
             </FormItem>
             <FormItem label="图片上传">
-                <Upload ref="upload" accept="image/*" :format="['jpeg','jpg','png','gif']" multiple type="drag" name="upload" :action="action" :on-success="upload" :max-size="2048" >
+                <Upload ref="upload" accept="image/*" :format="['jpeg','jpg','png','gif']" multiple type="drag" name="upload" :action="action"
+                    :on-success="upload" :max-size="2048">
                     <div style="padding: 20px 0">
                         <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                         <p>点击或将文件拖拽到这里上传</p>
@@ -58,10 +59,9 @@
                     data: params
                 }).then((res) => {
                     if (res.data.logind) {
-                        alert("保存成功")
-                        console.log("保存成功");
+                        $this.$Message.success("保存成功!")
                     } else {
-                        alert("未登录")
+                        $this.$Message.error("保存失败!")
                     }
                 }, (error) => {
                     console.log(error);
@@ -86,9 +86,21 @@
                 this.albumSel = [];
                 this.$refs["upload"].clearFiles();
             }
+        },
+        mounted() {
+            var $this = this;
+            if (!$this.$store.getters.getLogind) {
+                this.$router.replace({
+                    path: '/'
+                })
+                console.log("未登录");
+            }
+
         }
     }
 </script>
-<style scoped>
-    @import '../../node_modules/iview/dist/styles/iview.css';
+<style>
+    .ivu-input-wrapper .ivu-input{
+        box-sizing: border-box!important;
+    }
 </style>

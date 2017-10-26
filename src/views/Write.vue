@@ -66,7 +66,7 @@
                 $this.$axios({
                     method: "post",
                     url: $this.servUrl + '/api/saveArticle',
-                    data:params
+                    data: params
                 }).then((res) => {
                     $this.id = res.data._id
                     console.log(res);
@@ -77,24 +77,29 @@
         },
         mounted() {
             var $this = this
-            if (!!$this.$route.query.id) {
-                var params = {
-                    id: $this.$route.query.id
+            if ($this.$store.getters.getLogind) {
+                if (!!$this.$route.query.id) {
+                    var params = {
+                        id: $this.$route.query.id
+                    }
+                    $this.$axios({
+                        method: "get",
+                        url: $this.servUrl + '/api/getArticle',
+                        params
+                    }).then((res) => {
+                        $this.input = res.data.data.content;
+                        $this.title = res.data.data.title;
+                        $this.category = res.data.data.category;
+                        console.log(res);
+                    }, (error) => {
+                        console.log(error);
+                    });
                 }
-                $this.$axios({
-                    method: "get",
-                    url: $this.servUrl + '/api/getArticle',
-                    params
-                }).then((res) => {
-                    $this.input = res.data.data.content;
-                    $this.title = res.data.data.title;
-                    $this.category = res.data.data.category;
-                    console.log(res);
-                }, (error) => {
-                    console.log(error);
-                });
-
-
+            } else {
+                this.$router.replace({
+                    path: '/'
+                })
+                console.log("未登录");
             }
         }
     }

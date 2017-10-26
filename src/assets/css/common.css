@@ -83,7 +83,8 @@
 .header .nav a {
     width: 80px;
     margin: 0 10px;
-    text-align: center
+    text-align: center;
+    font-size: 16px;
 }
 
 .header .nav a:hover {
@@ -282,6 +283,7 @@
 
 .write {
     width: 100%;
+    font-size: 16px;
 }
 
 .write select {

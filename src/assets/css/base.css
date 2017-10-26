@@ -1,3 +1,7 @@
+* {
+    box-sizing: initial;
+}
+
 body,
 h1,
 h2,
@@ -49,6 +53,7 @@ h6 {
     font-size: 100%;
     font-weight: normal
 }
+
 
 /*address,
 cite,
@@ -113,7 +118,8 @@ textarea {
     font-size: 100%;
 }
 
-textarea,input {
+textarea,
+input {
     resize: none;
     outline: none
 }
@@ -198,11 +204,11 @@ body {
     display: none;
 }
 
-.separate{
-    margin:0 5px;
+.separate {
+    margin: 0 5px;
 }
 
-.loading .bar{
+.loading .bar {
     background: #F1103A;
-    height:2px;
+    height: 2px;
 }
