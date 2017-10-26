@@ -14,7 +14,12 @@ var createFolder = function (folder) {
   }
 };
 
+// 开发环境地址
 var uploadFolder = 'dist/upload/';
+
+// 生产环境地址
+// var uploadFolder = '/srv/www/dist/upload/';
+
 createFolder(uploadFolder);
 // 通过 filename 属性定制
 var storage = multer.diskStorage({

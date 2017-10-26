@@ -30,19 +30,10 @@
                 return this.$store.getters.getLogind
             },
             src() {
-                if (this.$route.name == 'album') {
-                    if (window.innerWidth > 600) {
-                        return require('../assets/images/logo_w.png')
-                    } else {
-                        return require('../assets/images/logo_w@2x.png')
-                    }
-
+                if (window.innerWidth > 600) {
+                    return require('../assets/images/logo.png')
                 } else {
-                    if (window.innerWidth > 600) {
-                        return require('../assets/images/logo.png')
-                    } else {
-                        return require('../assets/images/logo@2x.png')
-                    }
+                    return require('../assets/images/logo@2x.png')
                 }
             }
         }
