@@ -1,5 +1,5 @@
 <template>
-  <div class="main" v-if="">
+  <div class="main">
     <lay-header :isfold="isfold"></lay-header>
     <transition name="component-fade" mode="out-in">
       <router-view></router-view>
@@ -18,15 +18,15 @@
       }
     },
     computed: {
-      mainLoading(){
-        return 
+      mainLoading() {
+        return
       }
     },
     methods: {
       scroll() {
         this.scrollTop = document.documentElement.scrollTop;
         if (this.scrollTop > 55) {
-        
+
           this.isfold = true;
         } else {
           this.isfold = false;
