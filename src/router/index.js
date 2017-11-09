@@ -29,49 +29,85 @@ const router = new VueRouter({
     routes: [{
         path: '/login',
         name: 'login',
+        meta: {
+            requireAuth: false
+        },
         component: login,
     }, {
         path: '/',
         name: 'home',
+        meta: {
+            requireAuth: false
+        },
         component: home,
     }, {
         path: '/articles',
         name: 'articles',
+        meta: {
+            requireAuth: false
+        },
         component: articles,
     }, {
         path: '/article/:id',
         name: 'article',
+        meta: {
+            requireAuth: false
+        },
         component: article,
     }, {
         path: '/archive',
         name: 'archive',
+        meta: {
+            requireAuth: false
+        },
         component: archive,
     }, {
         path: '/write',
         name: 'write',
+        meta: {
+            requireAuth: true
+        },
         component: write,
     }, {
         path: '/about',
         name: 'about',
+        meta: {
+            requireAuth: false
+        },
         component: about,
     }, {
         path: '/tags',
         name: 'tags',
+        meta: {
+            requireAuth: false
+        },
         component: tags,
     }, {
         path: '/album',
         name: 'album',
+        meta: {
+            requireAuth: false
+        },
         component: album,
     }, {
         path: '/photos/:id',
         name: 'photos',
+        meta: {
+            requireAuth: false
+        },
         component: photos,
     }, {
         path: '/upload',
         name: 'upload',
+        meta: {
+            requireAuth: true
+        },
         component: upload,
     }, {
         path: '*',
+        meta: {
+            requireAuth: false
+        },
         redirect: '/'
     }]
 })

@@ -88,13 +88,13 @@
             }
         },
         mounted() {
-            var $this = this;
-            if (!$this.$store.getters.getLogind) {
-                this.$router.replace({
-                    path: '/'
-                })
-                console.log("未登录");
-            }
+            // var $this = this;
+            // if (!$this.$store.getters.getLogind) {
+            //     this.$router.replace({
+            //         path: '/'
+            //     })
+            //     console.log("未登录");
+            // }
 
         }
     }
