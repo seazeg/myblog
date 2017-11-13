@@ -492,6 +492,8 @@
 .pager .prev,
 .pager .next {
     color: #444;
+    position: relative;
+    top: 1px;
 }
 
 .login {
