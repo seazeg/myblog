@@ -48,7 +48,6 @@
                 });
             },
             scroll() {
-
                 var $this = this;
                 var scrollTop = this.jquery(window).scrollTop();　　
                 var scrollHeight = this.jquery(document).height();　　
