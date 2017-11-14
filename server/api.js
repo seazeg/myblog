@@ -56,7 +56,7 @@ router.post('/api/upload', upload.single('upload'), function (req, res, next) {
   console.log('文件保存路径：%s', file.path);
 
   res.json({
-    src: file.path
+    src: file.path.replace('/srv/www','')
   })
 
 });

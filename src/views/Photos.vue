@@ -1,7 +1,7 @@
 <template>
   <div id="photos" class="photos-box" style="width:100%;">
     <div class="item" v-for="item in data">
-      <img ref="img" :src="'../'+item.src" v-show="item.show" :alt="item.name">
+      <img ref="img" :src="item.src" v-show="item.show" :alt="item.name">
     </div>
   </div>
 </template>
@@ -40,7 +40,7 @@
         $('#photos').viewer({
           zoomRatio: 0.25,
           interval: 3000,
-          minZoomRatio: 0.5,
+          minZoomRatio: 0.25,
           maxZoomRatio: 2,
           hide: function () {
             _this.$router.replace({
