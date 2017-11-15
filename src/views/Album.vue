@@ -2,7 +2,7 @@
     <div class="album-box">
         <div class="grid">
             <figure class="effect-bubba" v-for="item in data">
-                <img :src="item.albumPic" alt="img22">
+                <img :src="item.albumPic" :alt="item.subTitle">
                 <figcaption>
                     <h2>{{item.title}}
                         <span>{{item.subTitle}}</span>

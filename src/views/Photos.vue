@@ -18,7 +18,8 @@
       <span></span>
     </div>
     <div class="item" v-for="item in data">
-      <img ref="img" :src="item.src" v-show="item.show" :alt="item.name" @load="imgLoad()">
+      <!-- <img ref="img" :src="item.src" v-show="item.show" :alt="item.name" @load="imgLoad()"> -->
+      <img ref="img" :src="'/'+item.src" v-show="item.show" :alt="item.name" @load="imgLoad()">
     </div>
   </div>
 </template>
