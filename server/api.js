@@ -24,7 +24,7 @@ createFolder(uploadFolder);
 // 通过 filename 属性定制
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null,  uploadFolder); // 保存的路径，备注：需要自己创建
+    cb(null, uploadFolder); // 保存的路径，备注：需要自己创建
   },
   filename: function (req, file, cb) {
     // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
@@ -56,7 +56,7 @@ router.post('/api/upload', upload.single('upload'), function (req, res, next) {
   console.log('文件保存路径：%s', file.path);
 
   res.json({
-    src: file.path.replace('/srv/www','')
+    src: file.path.replace('/srv/www', '')
   })
 
 });
@@ -217,7 +217,7 @@ router.post('/api/deleteArticle', (req, res) => {
 router.get('/api/getAlbum', (req, res) => {
   const _curpage = +req.query.curPage || 1,
     _pagesize = +req.query.pageSize || 9999;
-  const fieldArr = "_id title subTitle desc albumPic createDate"
+  const fieldArr = "_id title subTitle desc albumPic createDate src"
 
   const query = db.Album.find({});
   query.skip((_curpage - 1) * _pagesize);
@@ -231,6 +231,9 @@ router.get('/api/getAlbum', (req, res) => {
       res.send(err);
     } else {
       db.Album.find(function (err, rs) {
+        for (var i in doc) {
+          doc[i].src = JSON.parse(doc[i].src).length
+        }
         result = {
           logind: true,
           data: doc,

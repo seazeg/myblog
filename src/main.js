@@ -16,6 +16,8 @@ import utils from './utils/utils'
 import store from './service/'
 import iView from 'iview';
 
+
+
 Vue.use(VeeValidate);
 Vue.use(iView);
 

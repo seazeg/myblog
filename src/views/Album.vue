@@ -2,13 +2,13 @@
     <div class="album-box">
         <div class="grid">
             <figure class="effect-bubba" v-for="item in data">
-                <img :src="item.albumPic.replace('/srv/www','')" alt="img22">
+                <img :src="item.albumPic" alt="img22">
                 <figcaption>
                     <h2>{{item.title}}
                         <span>{{item.subTitle}}</span>
                     </h2>
                     <p>{{item.desc}}</p>
-                    <a class="animate-link" @click="open(item._id)"></a>
+                    <a class="animate-link" @click="open(item._id,item.src)"></a>
                 </figcaption>
             </figure>
         </div>
@@ -22,11 +22,11 @@
             }
         },
         methods: {
-            open(id) {
+            open(id, num) {
                 this.$router.push({
                     name: 'photos',
                     params: {
-                        id: id
+                        id: id + "?" + num,
                     }
                 });
             }
