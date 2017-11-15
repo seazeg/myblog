@@ -12,7 +12,7 @@
                 <router-link class="animate-link" to="/archive" :class="{'hover':this.$route.name=='archive'}">归档</router-link>
                 <router-link class="animate-link" to="/tags" :class="{'hover':this.$route.name=='tags'}">标签</router-link>
                 <router-link class="animate-link" to="/about" :class="{'hover':this.$route.name=='about'}">关于</router-link>
-                <!-- <router-link class="animate-link" to="/album" :class="{'hover':this.$route.name=='album'}">摄影</router-link> -->
+                <router-link class="animate-link" to="/album" :class="{'hover':this.$route.name=='album'}">摄影</router-link>
                 <router-link v-if="logind" class="animate-link" to="/write" :class="{'hover':this.$route.name=='write'}">撰写</router-link>
                 <router-link v-if="logind" class="animate-link" to="/upload" :class="{'hover':this.$route.name=='upload'}">上传</router-link>
             </div>

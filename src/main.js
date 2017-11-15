@@ -9,7 +9,7 @@ import 'iview/dist/styles/iview.css';
 import './assets/css/base.css'
 import './assets/css/font.css'
 import './assets/fonts/iconfont.css'
-import './assets/css/animate.css'
+// import './assets/css/animate.css'
 import './assets/css/common.css'
 import $ from 'jquery'
 import utils from './utils/utils'
