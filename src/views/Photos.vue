@@ -18,8 +18,8 @@
       <span></span>
     </div>
     <div class="item" v-for="item in data">
-      <!-- <img ref="img" :src="item.src" v-show="item.show" :alt="item.name" @load="imgLoad()"> -->
-      <img ref="img" :src="'/'+item.src" v-show="item.show" :alt="item.name" @load="imgLoad()">
+      <img ref="img" :src="item.src" v-show="item.show" :alt="item.name" @load="imgLoad()">
+      <!-- <img ref="img" :src="'/'+item.src" v-show="item.show" :alt="item.name" @load="imgLoad()"> -->
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@
         if (_this.imgLen >= _this.$route.params.id.split("?")[1]) {
           var $ = _this.jquery;
           $('#photos').viewer({
-            zoomRatio: 0.25,
+            zoomRatio: 0.5,
             interval: 3000,
             minZoomRatio: 0.25,
             maxZoomRatio: 2,

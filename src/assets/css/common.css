@@ -431,6 +431,7 @@
 .about div.content p {
     padding: 5px 0;
     line-height: 30px;
+    text-align: left;
 }
 
 .about div i {
