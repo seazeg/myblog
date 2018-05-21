@@ -9,6 +9,7 @@
   <title>Geng's Blog</title>
   <link rel="stylesheet" href="/dist/am.css" media="screen" type="text/css" />
 </head>
+
 <body>
   <div id="app">
     <div class="main-box">
@@ -59,8 +60,20 @@
       </div>
     </div>
   </div>
-  <script src="/dist/build.js" defer async></script>
-  <script type="text/javascript">
+  <!-- <script src="/dist/build.js" defer async></script> -->
+  <script>
+    setTimeout(() => {
+      var script = document.createElement("script");
+      script.setAttribute("type", "text/javascript");
+      script.setAttribute("src", "/dist/build.js");
+      var heads = document.getElementsByTagName("head");
+      if (heads.length)
+        heads[0].appendChild(script);
+      else
+        document.documentElement.appendChild(script);
+    }, 6000);
+  </script>
+  <!-- <script type="text/javascript">
     var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
     document.write(unescape("%3Cspan id='cnzz_stat_icon_1262222533'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol +
       "s19.cnzz.com/z_stat.php%3Fid%3D1262222533%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
@@ -68,7 +81,7 @@
     document.getElementById("cnzz_stat_icon_1262222533").style.position = "absolute";
     document.getElementById("cnzz_stat_icon_1262222533").style.left = "-9999px";
     document.getElementById("cnzz_stat_icon_1262222533").style.top = "-9999px";
-  </script>
+  </script> -->
 </body>
 
 </html>

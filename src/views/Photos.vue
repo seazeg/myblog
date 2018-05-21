@@ -18,8 +18,8 @@
       <span></span>
     </div>
     <div class="item" v-for="item in data">
-      <img ref="img" :src="item.src" v-show="item.show" :alt="item.name" @load="imgLoad()">
-      <!-- <img ref="img" :src="'/'+item.src" v-show="item.show" :alt="item.name" @load="imgLoad()"> -->
+      <!-- <img ref="img" :src="item.src" v-show="item.show" :alt="item.name" @load="imgLoad()"> -->
+      <img ref="img" :src="'/'+item.src" v-show="item.show" :alt="item.name" @load="imgLoad()">
     </div>
   </div>
 </template>
@@ -44,6 +44,7 @@
           params
         }).then((res) => {
           _this.data = JSON.parse(res.data.data.src);
+          console.log(_this.data);
         }, (error) => {
           console.log(error);
         });
@@ -69,12 +70,7 @@
       }
     },
     mounted() {
-
       this.getData();
-      //异步延时
-      setTimeout(function () {
-
-      }, 50)
     }
   }
 </script>
