@@ -118,6 +118,8 @@ const nanobar = new Nanobar({
     classname: 'loading'
 });
 
+
+
 router.beforeEach((to, from, next) => {
     nanobar.go(30)
     next();
