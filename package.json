@@ -53,11 +53,16 @@
   "devDependencies": {
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-vue-jsx": "^3.4.3"
+    "babel-plugin-transform-vue-jsx": "^3.4.3",
+    "cz-custom-enhanced": "0.0.2",
+    "cz-customizable": "^5.2.0"
   },
   "config": {
     "commitizen": {
-      "path": "cz-customizable"
+      "path": "./node_modules/cz-custom-enhanced"
+    },
+    "cz-customizable": {
+      "config": "cz-config.js"
     }
   }
 }
